@@ -18,6 +18,8 @@ class Router {
     public static function resolve() {
         $path = Request::getPath();
         $method = Request::getMethod();
+        
+        
     }
     public static function abort($code = 404) {
         http_response_code($code);

@@ -6,6 +6,6 @@ class Request {
         return parse_url($_SERVER['REQUEST_URI']);
     }
     public static function getMethod() {
-        return $_REQUEST['METHOD'];
+        return $_SERVER['REQUEST_METHOD'];
     }
 }

@@ -1,27 +1,28 @@
 <?php
 
 require __DIR__ . "/../../vendor/autoload.php";
-
 Dotenv\Dotenv::createImmutable(__DIR__ . "/../../")->load();
 
-use PDO;
-use PDOException;
 
 class database
 {
     private $dsn;
-    private $host;
     private $user;
     private $pass;
-    private $db_name;
 
     public function __construct()
     {
-        $this->host = $_ENV["db_host"];
-        $this->db_name = $_ENV["db_name"];
+        $config = [
+            'host' => $_ENV["db_host"],
+            'port' => 3306,
+            'dbname' => $_ENV["db_name"],
+            'charset' => 'utf8mb4',
+        ];
+
         $this->user = $_ENV["user"];
         $this->pass = $_ENV["pass"];
-        $this->dsn = "mysql:host=$this->host;dbname=$this->db_name;charset=utf8";
+
+        $this->dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['dbname']};charset={$config['charset']}";
     }
 
     public function getConnection()
