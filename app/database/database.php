@@ -2,8 +2,7 @@
 
 require __DIR__ . "/../../vendor/autoload.php";
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../../");
-$dotenv->load();
+Dotenv\Dotenv::createImmutable(__DIR__ . "/../../")->load();
 
 use PDO;
 use PDOException;

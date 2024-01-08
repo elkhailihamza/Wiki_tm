@@ -1,6 +1,8 @@
 <?php
 
-include_once __DIR__ . "/./functions.php";
+require_once __DIR__ . "/../app/database/database.php";
+use app\services\sessionManager;
+sessionManager::start();
 
-$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
-functions::dd($uri);
+use app\core\Application;
+
