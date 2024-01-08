@@ -31,7 +31,7 @@ class database
             $pdo = new PDO($this->dsn, $this->user, $this->pass);
             return $pdo;
         } catch (PDOException $e) {
-            echo "Connection Failed:" . $e;
+            echo "Connection Failed:" . $e->getMessage();
             die();
         }
     }
