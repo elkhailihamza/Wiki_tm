@@ -6,5 +6,4 @@ use app\services\sessionManager;
 sessionManager::start();
 
 use app\core\Application;
-
 Application::run();

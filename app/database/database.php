@@ -10,19 +10,12 @@ class database
     private $user;
     private $pass;
 
-    public function __construct()
+    public function __construct($config)
     {
-        $config = [
-            'host' => $_ENV["db_host"],
-            'port' => 3306,
-            'dbname' => $_ENV["db_name"],
-            'charset' => 'utf8mb4',
-        ];
-
         $this->user = $_ENV["user"];
         $this->pass = $_ENV["pass"];
 
-        $this->dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['dbname']};charset={$config['charset']}";
+        $this->dsn = 'mysql:' . http_build_query($config, '', ';');
     }
 
     public function getConnection()
@@ -37,5 +30,6 @@ class database
     }
 }
 
-$database = new database();
+$config = require (__DIR__ . "/./config.php");
+$database = new database($config['database']);
 $pdo = $database->getConnection();
