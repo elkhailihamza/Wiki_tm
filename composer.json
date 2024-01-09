@@ -2,7 +2,8 @@
     "name": "youcode/wiki_tm",
     "autoload": {
         "psr-4": {
-            "app\\": "app/"
+            "app\\": "app/",
+            "core\\": "core/"
         }
     },
     "require": {

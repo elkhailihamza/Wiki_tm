@@ -1,6 +1,6 @@
 <?php
 
-namespace app\core;
+namespace core\Routing;
 class Request {
     public static function getPath() {
         return parse_url($_SERVER['REQUEST_URI']);

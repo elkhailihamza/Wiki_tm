@@ -1,10 +1,10 @@
 <?php
 
-namespace app\core;
-use app\core\Request;
+namespace core\Routing;
+use core\Routing\Request;
 
 class Router {
-    private static array $routes = [];
+    protected static array $routes = [];
     public function __construct() 
     {
         
@@ -19,11 +19,11 @@ class Router {
         $path = Request::getPath();
         $method = Request::getMethod();
         
-        include __DIR__ . "/../../view/login.view.php";
+        include __DIR__ . "/../../app/view/register.view.php";
     }
     public static function abort($code = 404) {
         http_response_code($code);
-        include_once __DIR__ . "/../../view/{$code}.view.php";
+        include_once __DIR__ . "/../../app/view/{$code}.view.php";
         die();
     }
 }

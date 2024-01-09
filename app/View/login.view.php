@@ -1,7 +1,6 @@
 <?php
 include __DIR__ . "/./include/reg_navbar.php";
 ?>
-
 <body class="bg-primary">
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
@@ -33,7 +32,7 @@ include __DIR__ . "/./include/reg_navbar.php";
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <a class="small" href="password.html">Forgot Password?</a>
-                                            <button class="btn btn-primary" type="submit" name="submit"
+                                            <button class="btn btn-primary" type="submit" name="sign-in"
                                                 value="luser">Login</button>
                                         </div>
                                     </form>

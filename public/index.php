@@ -1,9 +1,13 @@
 <?php
 
-require_once __DIR__ . "/../app/database/database.php";
+require __DIR__ . "/../vendor/autoload.php";
+use core\Database\database;
 
-use app\services\sessionManager;
+use app\Services\sessionManager;
 sessionManager::start();
 
-use app\core\Application;
+use app\Controller\AuthController;
+$test = new AuthController();
+
+use core\Routing\Application;
 Application::run();

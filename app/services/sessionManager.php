@@ -1,6 +1,6 @@
 <?php
 
-namespace app\services;
+namespace app\Services;
 
 class sessionManager {
     public static function start() {

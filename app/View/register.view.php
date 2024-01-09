@@ -1,3 +1,7 @@
+<?php
+include __DIR__ . "/./include/reg_navbar.php";
+?>
+
 <body class="bg-primary">
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
@@ -50,7 +54,7 @@
                                         </div>
                                         <div class="mt-4 mb-0">
                                             <div class="d-grid"><button class="btn btn-primary btn-block" type="submit"
-                                                    name="submit" value="ruser">Create Account</button></div>
+                                                    name="sign-up">Create Account</button></div>
                                         </div>
                                     </form>
                                 </div>
@@ -64,3 +68,6 @@
                 </div>
             </main>
         </div>
+        <?php
+        include __DIR__ . "/./include/reg_footer.php";
+        ?>

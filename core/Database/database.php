@@ -1,21 +1,25 @@
 <?php
+namespace core\Database;
 
-require __DIR__ . "/../../vendor/autoload.php";
-Dotenv\Dotenv::createImmutable(__DIR__ . "/../../")->load();
+use Dotenv\Dotenv;
+use PDO;
+use PDOException;
 
-
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
+$dotenv->load();
 class database
 {
     private $dsn;
     private $user;
     private $pass;
 
-    public function __construct($config)
+    public function __construct()
     {
         $this->user = $_ENV["user"];
         $this->pass = $_ENV["pass"];
 
-        $this->dsn = 'mysql:' . http_build_query($config, '', ';');
+        $config = require(__DIR__ . "/./config.php");
+        $this->dsn = 'mysql:' . http_build_query($config['database'], '', ';');
     }
 
     public function getConnection()
@@ -29,7 +33,3 @@ class database
         }
     }
 }
-
-$config = require (__DIR__ . "/./config.php");
-$database = new database($config['database']);
-$pdo = $database->getConnection();
