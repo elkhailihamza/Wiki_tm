@@ -69,7 +69,7 @@ class AuthController
     public function displayError()
     {
         if (!empty(self::$error)) {
-            include_once (__DIR__ . '/../View/include/partial/errorBox.php');
+            include_once (__DIR__ . '/../View/includes/partial/errorBox.php');
         }
     }
 }
