@@ -1,6 +1,7 @@
 <?php
 
 namespace app\model;
+
 use core\Database\database;
 use PDO;
 use PDOException;
@@ -19,7 +20,7 @@ class Auth {
         return $result;
     }
     public function loginUser() {
-        
+
     }
     public function registerUser($fname, $lname, $email, $pass, $role_id) {
         $sql = 'INSERT INTO `users`(`fname`, `lname`, `email`, `pass`, `role_id`) VALUES (:fname, :lname, :email, :pass, :role_id);';

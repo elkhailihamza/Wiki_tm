@@ -1,5 +1,7 @@
 <?php
 namespace app\Controller;
+
+use app\Services\sessionManager;
 use app\model\Auth;
 
 class AuthController
@@ -10,19 +12,27 @@ class AuthController
     private $email;
     private $pass;
     private $confirmPass;
-    private static $error;
+    private static string $error;
     public function __construct()
     {
         $this->Auth = new Auth();
         $this->registration();
     }
-
-    public function registration()
+    public function registration() {
+        $term = $this->fetchData();
+        if ($term === 'sign-in') {
+            $this->loginUser();
+        }
+        if ($term === 'sign-up') {
+            $this->registerUser();
+        }
+    }
+    public function fetchData()
     {
         if (isset($_POST['sign-in'])) {
             $this->email = $_POST['email'];
             $this->pass = $_POST['pass'];
-            $this->loginUser();
+            return 'sign-in';
         }
         if (isset($_POST['sign-up'])) {
             $this->fname = $_POST['fname'];
@@ -30,7 +40,7 @@ class AuthController
             $this->email = $_POST['email'];
             $this->pass = $_POST['pass'];
             $this->confirmPass = $_POST['confirmpass'];
-            $this->registerUser();
+            return 'sign-up';
         }
     }
 
@@ -40,6 +50,10 @@ class AuthController
         if ($result) {
             $password = $result->pass;
             if (password_verify($this->pass, $password)) {
+                sessionManager::set('id_user', $result->id_user);
+                sessionManager::set('fname', $result->fname);
+                sessionManager::set('lname', $result->lname);
+                sessionManager::set('role_id', $result->role_id);
                 $this->Auth->loginUser();
             }
         } else {
@@ -69,7 +83,7 @@ class AuthController
     public function displayError()
     {
         if (!empty(self::$error)) {
-            include_once (__DIR__ . '/../View/includes/partial/errorBox.php');
+            include_once(__DIR__ . '/../View/includes/partial/errorBox.php');
         }
     }
 }

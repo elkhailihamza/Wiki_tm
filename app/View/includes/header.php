@@ -23,6 +23,7 @@
                         <a href="index.html" class="nav-item nav-link active text-white">Home</a>
                         <a href="about.html" class="nav-item nav-link">Articles</a>
                         <a href="service.html" class="nav-item nav-link">Create</a>
+                        <a href="service.html" class="nav-item nav-link">Categories</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link" data-bs-toggle="dropdown"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
