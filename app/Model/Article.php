@@ -28,4 +28,16 @@ class Article
         $stmt->bindParam(':categorie_id', $categorie_id, PDO::PARAM_INT);
         $stmt->execute();
     }
+    public function selectCategorie() {
+        $sql = "SELECT `id_categorie`, `categorie_name`, `categorie_desc` FROM `categorie`;";
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function selectTag() {
+        $sql = "SELECT `id_tag`, `tag_name` FROM `tag`;";
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 }

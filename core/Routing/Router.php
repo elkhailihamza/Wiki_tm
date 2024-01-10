@@ -19,7 +19,7 @@ class Router {
         $path = Request::getPath();
         $method = Request::getMethod();
         
-        include __DIR__ . "/../../app/Controller/ArticleController.php";
+        include __DIR__ . "/../../app/Controller/ArticleController/CreateController.php";
     }
     public static function abort($code = 404) {
         http_response_code($code);
