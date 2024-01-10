@@ -6,7 +6,10 @@ class Validator {
 
         return strlen($value) >= $min && strlen($value) <= $max;
     }
-    public static function displayErrors($stuff) {
+    public static function tt() {
 
+    }
+    public static function displayErrors($stuff) {
+        
     }
 }
