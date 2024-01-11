@@ -14,7 +14,7 @@ class Article
     }
     public function fetchArticles($term = ';')
     {
-        return $this->db->query('SELECT * FROM wiki_article' . $term);
+        return $this->db->query('SELECT * FROM wiki_article' . $term)['fetch'];
     }
     public function insert($title, $content, $is_archived, $author_id, $categorie_id = null)
     {
@@ -23,7 +23,7 @@ class Article
 
         $pdo = $this->db->query(
             $sql,
-            [':title' => $title, ':content' => $content, ':is_archived' => $is_archived, ':author_id' => $author_id, ':categorie_id' => $categorie_id]
+            [':title' => $title, 'content' => $content, 'is_archived' => $is_archived, 'author_id' => $author_id, 'categorie_id' => $categorie_id]
         )['pdo'];
 
         return $pdo->lastInsertId();
@@ -38,6 +38,6 @@ class Article
     }
     public function insertTagWiki($tag_id, $last_id)
     {
-        $this->db->query('INSERT INTO `wiki_tag`(`tag_id`, `article_id`) VALUES (:tag_id, :last_id);', [':tag_id' => $tag_id, ':last_id' => $last_id]);
+        $this->db->query('INSERT INTO `wiki_tag`(`tag_id`, `article_id`) VALUES (:tag_id, :last_id);', ['tag_id' => $tag_id, 'last_id' => $last_id]);
     }
 }

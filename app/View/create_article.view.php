@@ -42,7 +42,7 @@ require(__DIR__ . "/./includes/header.php");
             ?>
         </div>
         <div class="container d-flex justify-content-center">
-            <button type="submit" name="article" class="btn btn-primary">Create</button>
+            <a href="articles"><button type="submit" name="article" class="btn btn-primary">Create</button></a>
         </div>
     </form>
 </div>

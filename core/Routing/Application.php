@@ -4,7 +4,7 @@ namespace core\Routing;
 use core\Routing\Router;
 
 class Application {
-    public static function run() {
-        Router::resolve();
+    public static function run($router) {
+        $router->resolve();
     }
 }

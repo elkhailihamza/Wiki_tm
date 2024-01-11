@@ -9,11 +9,11 @@ class indexController {
         $this->Article = new Article();
     }
     public function fetchArticles() {
-        return $this->Article->fetchArticles('');
+        return $this->Article->fetchArticles();
     }
 }
 
-$articles = new indexController();
-// $fetched = $articles->fetchArticles();
+$article = new indexController();
+$articles = $article->fetchArticles();
 
-include __DIR__ . '/../View/articles.view.php';
+require(__DIR__ . '/../../View/articles.view.php');

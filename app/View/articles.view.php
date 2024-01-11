@@ -1,6 +1,6 @@
 <?php
-require (__DIR__. "/./includes/head.php");
-require (__DIR__ . "/./includes/header.php");
+require(__DIR__ . "/./includes/head.php");
+require(__DIR__ . "/./includes/header.php");
 ?>
 <section class="container-fluid p-0">
     <section class="testimonial-section spad pt-5">
@@ -30,19 +30,13 @@ require (__DIR__ . "/./includes/header.php");
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12 p-0">
-                    <div class="card border-0 mb-4">
-                        <div class="card-body p-0 d-flex gap-2" style="flex-wrap: wrap; margin-left: 30px;">
-                           <?php foreach($articles as $article) : ?>
-                                <p><?= $article->article_name ?></p>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                    include (__DIR__ . "/./includes/articles.php");
+                ?>
             </div>
         </div>
     </section>
 </section>
 <?php
-require (__DIR__ . "/./includes/footer.php");
+require(__DIR__ . "/./includes/footer.php");
 ?>
