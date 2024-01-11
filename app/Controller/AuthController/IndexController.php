@@ -1,10 +1,10 @@
 <?php
-namespace app\Controller;
+namespace app\Controller\AuthController;
 
 use app\Services\sessionManager;
 use app\model\Auth;
 
-class AuthController
+class IndexController
 {
     private $Auth;
     private $fname;
@@ -18,21 +18,13 @@ class AuthController
         $this->Auth = new Auth();
         $this->registration();
     }
-    public function registration() {
-        $term = $this->fetchData();
-        if ($term === 'sign-in') {
-            $this->loginUser();
-        }
-        if ($term === 'sign-up') {
-            $this->registerUser();
-        }
-    }
-    public function fetchData()
+
+    public function registration()
     {
         if (isset($_POST['sign-in'])) {
             $this->email = $_POST['email'];
             $this->pass = $_POST['pass'];
-            return 'sign-in';
+            $this->loginUser();
         }
         if (isset($_POST['sign-up'])) {
             $this->fname = $_POST['fname'];
@@ -40,7 +32,7 @@ class AuthController
             $this->email = $_POST['email'];
             $this->pass = $_POST['pass'];
             $this->confirmPass = $_POST['confirmpass'];
-            return 'sign-up';
+            $this->registerUser();
         }
     }
 

@@ -14,13 +14,15 @@ class CreateController
     private $articleTitle;
     private $articleContent;
     private $categorie_id;
-    private $lastInsertedId;
     private array $tags = [];
     public static array $errors = [];
     public function __construct()
     {
         $this->Article = new Article();
         $this->create();
+        $categories = $this->selectCategorie();
+        $tags = $this->selectTag();
+        require(__DIR__ . '/../../View/ArticleView/create.view.php');
     }
     public function fetchData()
     {
@@ -69,8 +71,4 @@ class CreateController
     }
 }
 
-$create = new CreateController();
-$categories = $create->selectCategorie();
-$tags = $create->selectTag();
-
-require(__DIR__ . '/../../View/create_article.view.php');
+new CreateController();

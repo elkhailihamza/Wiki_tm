@@ -1,6 +1,8 @@
 <?php
-include __DIR__ . "/./include/reg_navbar.php";
+include __DIR__ . "/./includes/head.php";
+include __DIR__ . "/./includes/reg_navbar.php";
 ?>
+
 <body class="bg-primary">
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
@@ -38,7 +40,7 @@ include __DIR__ . "/./include/reg_navbar.php";
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">
-                                    <div class="small"><a href="index.php?page=register">Need an account? Sign up!</a>
+                                    <div class="small"><a href="register">Need an account? Sign up!</a>
                                     </div>
                                 </div>
                             </div>
@@ -48,5 +50,5 @@ include __DIR__ . "/./include/reg_navbar.php";
             </main>
         </div>
         <?php
-        include __DIR__ . "/./include/reg_footer.php";
+        include __DIR__ . "/./includes/footer.php";
         ?>

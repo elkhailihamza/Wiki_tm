@@ -24,6 +24,7 @@ if (!empty($articles)) {
                     </p>
                 </div>
             </div>
+            <hr>
             </br>
             <?php
         endforeach;

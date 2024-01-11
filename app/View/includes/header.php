@@ -21,11 +21,12 @@
                 <div class="collapse navbar-collapse bg-transparent" id="navbarCollapse">
                     <div class="navbar-nav p-0">
                         <?php
+                        $uri = $_GET['uri'] ?? 'Home';
                         $arr = ['Home', 'Articles', 'Create', 'Categories'];
                         foreach ($arr as $v):
                             ?>
                             <a href="<?= lcfirst($v) ?>"
-                                class="nav-item nav-link <?= ucfirst($_GET['uri']) === $v ? 'active text-white' : '' ?>">
+                                class="nav-item nav-link <?= ucfirst($uri) === $v ? 'active text-white' : '' ?>">
                                 <?= $v ?>
                             </a>
                             <?php

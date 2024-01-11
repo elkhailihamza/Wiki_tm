@@ -1,19 +1,24 @@
 <?php
 
 namespace app\Controller\ArticleController;
+
 use app\model\Article;
 
-class indexController {
+class IndexController
+{
     private $Article;
-    public function __construct() {
+    public function __construct()
+    {
         $this->Article = new Article();
+        $articles = $this->fetchArticles();
+
+        require(__DIR__ . '/../../View/ArticleView/index.view.php');
     }
-    public function fetchArticles() {
+    public function fetchArticles()
+    {
         return $this->Article->fetchArticles();
     }
 }
 
-$article = new indexController();
-$articles = $article->fetchArticles();
+new indexController();
 
-require(__DIR__ . '/../../View/articles.view.php');

@@ -1,6 +1,6 @@
 <?php
-require(__DIR__ . "/./includes/head.php");
-require(__DIR__ . "/./includes/header.php");
+require(__DIR__ . "/../includes/head.php");
+require(__DIR__ . "/../includes/header.php");
 ?>
 <section class="container-fluid p-0">
     <section class="testimonial-section spad pt-5">
@@ -31,12 +31,12 @@ require(__DIR__ . "/./includes/header.php");
             </div>
             <div class="row">
                 <?php
-                    include (__DIR__ . "/./includes/articles.php");
+                    include (__DIR__ . "/../includes/articles.php");
                 ?>
             </div>
         </div>
     </section>
 </section>
 <?php
-require(__DIR__ . "/./includes/footer.php");
+require(__DIR__ . "/../includes/footer.php");
 ?>

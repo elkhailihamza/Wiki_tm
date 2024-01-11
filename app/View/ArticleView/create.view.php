@@ -1,6 +1,6 @@
 <?php
-require(__DIR__ . "/./includes/head.php");
-require(__DIR__ . "/./includes/header.php");
+require(__DIR__ . "/../includes/head.php");
+require(__DIR__ . "/../includes/header.php");
 ?>
 <div class="form-group d-flex flex-column justify-content-center align-items-center" style="height: 575px;">
     <div class="container text-center mb-3">
@@ -26,7 +26,7 @@ require(__DIR__ . "/./includes/header.php");
                 </svg>
             </button>
             <?php
-            require(__DIR__ . "/./includes/categorieModal.php");
+            require(__DIR__ . "/../includes/categorieModal.php");
             ?>
             <span id="categoryPlace"></span>
             <button type="button" class="btn btn-success d-flex align-items-center p-1" data-bs-toggle="modal"
@@ -38,7 +38,7 @@ require(__DIR__ . "/./includes/header.php");
                 </svg>
             </button>
             <?php
-            require(__DIR__ . "/./includes/tagModal.php");
+            require(__DIR__ . "/../includes/tagModal.php");
             ?>
         </div>
         <div class="container d-flex justify-content-center">
@@ -47,5 +47,5 @@ require(__DIR__ . "/./includes/header.php");
     </form>
 </div>
 <?php
-require(__DIR__ . "/./includes/footer.php");
+require(__DIR__ . "/../includes/footer.php");
 ?>
