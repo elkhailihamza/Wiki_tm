@@ -9,7 +9,7 @@ class indexController {
         $this->Article = new Article();
     }
     public function fetchArticles() {
-        return $this->Article->fetchArticles();
+        return $this->Article->fetchArticles('');
     }
 }
 

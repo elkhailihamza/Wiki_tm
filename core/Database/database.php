@@ -27,10 +27,16 @@ class database
         try {
             $pdo = new PDO($this->dsn, $this->user, $this->pass);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $pdo;
         } catch (PDOException $e) {
             echo "Connection Failed:" . $e->getMessage();
             die();
         }
+        return $pdo;
     }
+    public function query($query, $terms = []) {
+        $pdo = $this->getConnection();
+        $stmt = $pdo->prepare($query);
+        $stmt->execute($terms);
+        return ['pdo' => $pdo, 'fetch' => $stmt->fetchAll(PDO::FETCH_OBJ)];
+    }    
 }

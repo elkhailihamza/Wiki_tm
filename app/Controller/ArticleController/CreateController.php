@@ -35,7 +35,7 @@ class CreateController
     }
     public function fetchArticles()
     {
-        return $this->Article->fetchArticles();
+        return $this->Article->fetchArticles('');
     }
     public function create()
     {
@@ -48,7 +48,7 @@ class CreateController
         }
         if (empty(self::$errors)) {
             $lastInsertedId = $this->Article->insert($this->articleTitle, $this->articleContent, 1, 2, $this->categorie_id);
-            if (empty($this->tags)) {
+            if (!empty($this->tags)) {
                 $this->insertTagWiki($lastInsertedId);
             }
         }
