@@ -28,7 +28,9 @@ class CreateController
             $this->articleTitle = $_POST['articletitle'];
             $this->articleContent = $_POST['articlecontent'];
             $this->categorie_id = $_POST['categorie'] ?? NULL;
-            $this->tags = $_POST['tags'];
+            if (!empty($_POST['tags'])) {
+                $this->tags = $_POST['tags'];
+            }
         }
     }
     public function fetchArticles()
@@ -46,11 +48,14 @@ class CreateController
         }
         if (empty(self::$errors)) {
             $lastInsertedId = $this->Article->insert($this->articleTitle, $this->articleContent, 1, 2, $this->categorie_id);
-            $this->insertTagWiki($lastInsertedId);
+            if (empty($this->tags)) {
+                $this->insertTagWiki($lastInsertedId);
+            }
         }
     }
-    public function insertTagWiki($lastInsertedId) {
-        foreach($this->tags as $tag_id) :
+    public function insertTagWiki($lastInsertedId)
+    {
+        foreach ($this->tags as $tag_id):
             $this->Article->insertTagWiki($tag_id, $lastInsertedId);
         endforeach;
     }
