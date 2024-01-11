@@ -14,6 +14,6 @@ class indexController {
 }
 
 $articles = new indexController();
-$fetched = $articles->fetchArticles();
+// $fetched = $articles->fetchArticles();
 
 include __DIR__ . '/../View/articles.view.php';

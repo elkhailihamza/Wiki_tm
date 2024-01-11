@@ -59,7 +59,7 @@ class AuthController
         } else {
             self::$error = 'Email or password error!';
         }
-        $this->displayError();
+        // $this->displayError();
     }
     public function registerUser()
     {
@@ -78,12 +78,12 @@ class AuthController
         } else {
             self::$error = 'Email already in use!';
         }
-        $this->displayError();
+        // $this->displayError();
     }
-    public function displayError()
-    {
-        if (!empty(self::$error)) {
-            include_once(__DIR__ . '/../View/includes/partial/errorBox.php');
-        }
-    }
+    // public function displayError()
+    // {
+    //     if (!empty(self::$error)) {
+    //         include_once(__DIR__ . '/../View/includes/partial/errorBox.php');
+    //     }
+    // }
 }

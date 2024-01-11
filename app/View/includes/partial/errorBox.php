@@ -1,3 +1,11 @@
 <div class=" text-center alert alert-danger">
-    <p><?= self::$error ?></p>
+    <?php
+    foreach ($errors as $error):
+        ?>
+        <span>
+            <?= $error ?>
+        </span>
+        <?php
+    endforeach;
+    ?>
 </div>
