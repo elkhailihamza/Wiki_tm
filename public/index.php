@@ -23,6 +23,7 @@ if (sessionManager::get('id_user') !== NULL) {
     $router->delete('articles', 'ArticleController/Delete');
     $router->get('create', 'ArticleController/Create');
     $router->get('articles/show', 'ArticleController/Check');
+    $router->get('logout', 'AuthController/Logout');
     $router->get('categories', 'Categorie');
 }
 
