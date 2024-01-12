@@ -5,7 +5,7 @@ use core\Routing\functions;
 
 class IndexController {
     public function __construct() {
-        require functions::base_path('app/View/Dashboard_home.view.php');
+        require __DIR__ . "/../../View/dashboard/dashboard_home.view.php";
     }
 }
 

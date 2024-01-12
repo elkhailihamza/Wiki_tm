@@ -3,7 +3,7 @@
 class HomeController {
 
     public function __construct() {
-        include __DIR__ . '/../View/index.view.php';
+        require_once __DIR__ . "/../View/dashboard/dashboard_home.view.php";
     }
 }
 

@@ -2,7 +2,6 @@
 
 require __DIR__ . "/../vendor/autoload.php";
 
-use core\Database\database;
 use core\Routing\Router;
 use core\Routing\Application;
 use app\Services\sessionManager;
