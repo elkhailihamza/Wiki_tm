@@ -27,4 +27,12 @@ if (sessionManager::get('id_user') !== NULL) {
     $router->get('categories', 'Categorie');
 }
 
+if (sessionManager::get('id_user') === 2) {
+    $router->get('dashboard', function () {
+        header('Location: /dashboard/home');
+        exit;
+    });
+    $router->get('dashboard/home', 'DashboardController/Index');
+}
+
 Application::run($router);
