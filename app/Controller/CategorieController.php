@@ -1,9 +1,20 @@
 <?php
 
-class CategorieController {
+use app\model\Categorie;
 
-    public function __construct() {
-        include __DIR__ . '/../View/categorie.view.php';
+class CategorieController
+{
+    private $categorie;
+    public function __construct()
+    {
+        $this->categorie = new Categorie();
+        $OBJ = $this->fetchCategories();
+        require __DIR__ . '/../View/categorie.view.php';
+    }
+
+    public function fetchCategories()
+    {
+        return $this->categorie->fetchCategories();
     }
 }
 

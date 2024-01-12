@@ -19,7 +19,7 @@ class ShowController
         $uri = explode('/', $_GET['uri']);
         $uriEnd = end($uri);
 
-        if ($this->checkArticle($uriEnd)) {
+        if (!empty($this->checkArticle($uriEnd))) {
             $selectedArticle = $this->checkArticle($uriEnd);
             return require functions::base_path('app/View/ArticleView/show.view.php');
         } else {
@@ -30,7 +30,7 @@ class ShowController
 
     private function checkArticle($articleName)
     {
-        return !empty($this->Article->fetchArticles('*', 'WHERE article_name = ?;', [$articleName], 'fetch'));
+        return $this->Article->fetchArticles('*', 'WHERE article_name = ?;', [$articleName], 'fetch');
     }
 }
 

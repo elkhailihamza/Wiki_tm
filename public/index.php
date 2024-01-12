@@ -15,14 +15,14 @@ $router->get('login', 'AuthController/Login');
 $router->post('login', 'AuthController/Login');
 $router->get('register', 'AuthController/Register');
 $router->post('register', 'AuthController/Register');
-$router->get('/', 'Home');
-$router->get('home', 'Home');
-$router->get('articles', 'ArticleController/Index');
-$router->get('create', 'ArticleController/Create');
-$router->get('article', 'ArticleController/Show');
 
-if (sessionManager::get('id_user') === 1) {
-
+if (sessionManager::get('id_user') !== NULL) {
+    $router->get('/', 'Home');
+    $router->get('home', 'Home');
+    $router->get('articles', 'ArticleController/Index');
+    $router->get('create', 'ArticleController/Create');
+    $router->get('articles/show', 'ArticleController/Show');
+    $router->get('categories', 'Categorie');
 }
 
 Application::run($router);

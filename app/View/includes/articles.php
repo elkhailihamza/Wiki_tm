@@ -2,7 +2,7 @@
 
 if (!empty($articles)) {
     ?>
-    <div class="container col-8 mt-5">
+    <div class="container col-9 mt-5 border" style="height: 375px; overflow: auto;">
         <?php
         foreach ($articles as $article):
             ?>

@@ -37,13 +37,19 @@ class database
     {
         $pdo = $this->getConnection();
         $stmt = $pdo->prepare($query);
-    
+
         $stmt->execute($terms);
 
-        return [
+        $result = [
             'pdo' => $pdo,
-            'fetch' => $stmt->fetch(PDO::FETCH_OBJ),
-            'fetchAll' => $stmt->fetchAll(PDO::FETCH_OBJ)
+            'fetchAll' => $stmt->fetchAll(PDO::FETCH_OBJ),
+            'fetch' => null
         ];
+
+        if (!empty($result['fetchAll'])) {
+            $result['fetch'] = reset($result['fetchAll']);
+        }
+
+        return $result;
     }
 }
