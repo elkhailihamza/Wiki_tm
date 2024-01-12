@@ -19,10 +19,6 @@ class Auth
         $sql = 'SELECT * FROM users WHERE email = :email';
         return $this->db->query($sql, [':email' => $email])['fetch'];
     }
-    public function loginUser()
-    {
-
-    }
     public function registerUser($fname, $lname, $email, $pass, $role_id)
     {
         $sql = 'INSERT INTO `users`(`fname`, `lname`, `email`, `pass`, `role_id`) VALUES (:fname, :lname, :email, :pass, :role_id);';

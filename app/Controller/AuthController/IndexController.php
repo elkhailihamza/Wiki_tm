@@ -36,6 +36,16 @@ class IndexController
         }
     }
 
+    public function login()
+    {
+        require __DIR__ . "/../../View/login.view.php";
+    }
+
+    public function register()
+    {
+        require __DIR__ . "/../../View/login.view.php";
+    }
+
     public function loginUser()
     {
         $result = $this->Auth->findEmail($this->email);
@@ -46,12 +56,12 @@ class IndexController
                 sessionManager::set('fname', $result->fname);
                 sessionManager::set('lname', $result->lname);
                 sessionManager::set('role_id', $result->role_id);
-                $this->Auth->loginUser();
+                header("Location: home");
             }
         } else {
             self::$error = 'Email or password error!';
         }
-        // $this->displayError();
+        $this->displayError();
     }
     public function registerUser()
     {
@@ -60,7 +70,7 @@ class IndexController
             if ($this->pass === $this->confirmPass) {
                 $hashed = password_hash($this->pass, PASSWORD_DEFAULT);
                 if ($this->Auth->registerUser($this->fname, $this->lname, $this->email, $hashed, 1)) {
-                    echo 'Registered!';
+                    header('Location: /login');
                 } else {
                     self::$error = 'Register Error!';
                 }
@@ -70,12 +80,14 @@ class IndexController
         } else {
             self::$error = 'Email already in use!';
         }
-        // $this->displayError();
+        $this->displayError();
     }
-    // public function displayError()
-    // {
-    //     if (!empty(self::$error)) {
-    //         include_once(__DIR__ . '/../View/includes/partial/errorBox.php');
-    //     }
-    // }
+    public function displayError()
+    {
+        if (!empty(self::$error)) {
+            include_once(__DIR__ . '/../View/includes/partial/errorBox.php');
+        }
+    }
 }
+
+new IndexController;

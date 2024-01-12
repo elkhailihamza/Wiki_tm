@@ -11,11 +11,18 @@ sessionManager::start();
 
 $router = new Router;
 
-$router->get('/', 'app/Controller/HomeController.php');
-$router->get('home', 'app/Controller/HomeController.php');
-$router->get('articles', 'app/Controller/ArticleController/IndexController.php');
-$router->get('create', 'app/Controller/ArticleController/CreateController.php');
-$router->get('login', 'app/Controller/AuthController/LoginController.php');
-$router->get('register', 'app/Controller/AuthController/RegisterController.php');
+$router->get('login', 'AuthController/Login');
+$router->post('login', 'AuthController/Login');
+$router->get('register', 'AuthController/Register');
+$router->post('register', 'AuthController/Register');
+$router->get('/', 'Home');
+$router->get('home', 'Home');
+$router->get('articles', 'ArticleController/Index');
+$router->get('create', 'ArticleController/Create');
+$router->get('article', 'ArticleController/Show');
+
+if (sessionManager::get('id_user') === 1) {
+
+}
 
 Application::run($router);

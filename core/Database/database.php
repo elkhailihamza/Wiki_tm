@@ -33,10 +33,17 @@ class database
         }
         return $pdo;
     }
-    public function query($query, $terms = []) {
+    public function query($query, $terms = [])
+    {
         $pdo = $this->getConnection();
         $stmt = $pdo->prepare($query);
+    
         $stmt->execute($terms);
-        return ['pdo' => $pdo, 'fetch' => $stmt->fetchAll(PDO::FETCH_OBJ)];
-    }    
+
+        return [
+            'pdo' => $pdo,
+            'fetch' => $stmt->fetch(PDO::FETCH_OBJ),
+            'fetchAll' => $stmt->fetchAll(PDO::FETCH_OBJ)
+        ];
+    }
 }

@@ -14,43 +14,42 @@ class Router
         $this->uri = $_GET['uri'] ?? '/';
         $this->method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
     }
-    public function get($uri, $controller)
+    public function add($method, $uri, $controller)
     {
         $this->routes[] = [
             'uri' => $uri,
             'controller' => $controller,
-            'method' => 'GET'
+            'method' => $method
         ];
+    }
+    public function get($uri, $controller)
+    {
+        $this->add('GET', $uri, $controller);
     }
     public function post($uri, $controller)
     {
-        $this->routes[] = [
-            'uri' => $uri,
-            'controller' => $controller,
-            'method' => 'POST'
-        ];
+        $this->add('POST', $uri, $controller);
+
     }
     public function delete($uri, $controller)
     {
-        $this->routes[] = [
-            'uri' => $uri,
-            'controller' => $controller,
-            'method' => 'DELETE'
-        ];
+        $this->add('DELETE', $uri, $controller);
+
     }
     public function update($uri, $controller)
     {
-        $this->routes[] = [
-            'uri' => $uri,
-            'controller' => $controller,
-            'method' => 'UPDATE'
-        ];
+        $this->add('UPDATE', $uri, $controller);
+
     }
     public function resolve()
     {
+        $uriParts = explode('/', $this->uri);
+        if (isset($uriParts[1]) && $uriParts[1] === 'show') {
+            return require functions::base_path('app/Controller/ArticleController/ShowController.php');
+        }
         foreach ($this->routes as $route) {
             if ($route['uri'] === $this->uri && $route['method'] === strtoupper($this->method)) {
-                return require functions::base_path($route['controller']);
+                return require functions::base_path('app/Controller/' . $route['controller'] . 'Controller.php');
             }
         }
         self::abort();

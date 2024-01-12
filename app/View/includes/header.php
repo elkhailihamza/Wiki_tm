@@ -25,7 +25,7 @@
                         $arr = ['Home', 'Articles', 'Create', 'Categories'];
                         foreach ($arr as $v):
                             ?>
-                            <a href="<?= lcfirst($v) ?>"
+                            <a href="/wiki_tm/<?= lcfirst($v) ?>"
                                 class="nav-item nav-link <?= ucfirst($uri) === $v ? 'active text-white' : '' ?>">
                                 <?= $v ?>
                             </a>

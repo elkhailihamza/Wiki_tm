@@ -15,7 +15,7 @@ include __DIR__ . "/./includes/reg_navbar.php";
                                     <h3 class="text-center font-weight-light my-4">Login</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form method="post">
+                                    <form method="POST">
                                         <div class="form-floating mb-3">
                                             <input class="form-control" name="email" type="email"
                                                 placeholder="name@example.com" />

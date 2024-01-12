@@ -12,9 +12,9 @@ class Article
     {
         $this->db = new database;
     }
-    public function fetchArticles($term = ';')
+    public function fetchArticles($select = '*', $searchTerm = ';', $terms = [], $mode = 'fetchAll')
     {
-        return $this->db->query('SELECT * FROM wiki_article' . $term)['fetch'];
+        return $this->db->query('SELECT ' . $select . ' FROM wiki_article ' . $searchTerm, $terms)[$mode];
     }
     public function insert($title, $content, $is_archived, $author_id, $categorie_id = null)
     {
@@ -30,11 +30,11 @@ class Article
     }
     public function selectCategorie()
     {
-        return $this->db->query('SELECT `id_categorie`, `categorie_name`, `categorie_desc` FROM `categorie`;')['fetch'];
+        return $this->db->query('SELECT `id_categorie`, `categorie_name`, `categorie_desc` FROM `categorie`;')['fetchAll'];
     }
     public function selectTag()
     {
-        return $this->db->query('SELECT `id_tag`, `tag_name` FROM `tag`;')['fetch'];
+        return $this->db->query('SELECT `id_tag`, `tag_name` FROM `tag`;')['fetchAll'];
     }
     public function insertTagWiki($tag_id, $last_id)
     {

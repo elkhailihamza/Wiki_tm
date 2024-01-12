@@ -1,2 +1,2 @@
 <h1>Page Not Found!</h1>
-<a href="/index.php">Go Back Home.</a>
+<a href="/wiki_tm/home">Go Back Home.</a>

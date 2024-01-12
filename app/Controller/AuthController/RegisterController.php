@@ -1,11 +1,7 @@
 <?php
-
 use app\Controller\AuthController\IndexController;
-
-class RegisterController
-{
-    public function __construct()
-    {
+class RegisterController {
+    public function __construct() {
         require __DIR__ . "/../../View/register.view.php";
     }
 }
