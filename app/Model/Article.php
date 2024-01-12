@@ -16,6 +16,9 @@ class Article
     {
         return $this->db->query('SELECT ' . $select . ' FROM wiki_article ' . $searchTerm, $terms)[$mode];
     }
+    public function deleteArticle($terms) {
+        $this->db->query('DELETE FROM `wiki_article` WHERE id_article = ?', $terms);
+    }
     public function insert($title, $content, $is_archived, $author_id, $categorie_id = null)
     {
         $sql = "INSERT INTO wiki_article (id_article, article_name, article_content, is_archived, date_de_creation, auteur_id, categorie_id) 
