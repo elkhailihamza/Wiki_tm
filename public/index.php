@@ -20,9 +20,9 @@ if (sessionManager::get('id_user') !== NULL) {
     $router->get('/', 'Home');
     $router->get('home', 'Home');
     $router->get('articles', 'ArticleController/Index');
-    $router->get('create', 'ArticleController/Create');
-    $router->get('articles/show', 'ArticleController/Show');
     $router->delete('articles', 'ArticleController/Delete');
+    $router->get('create', 'ArticleController/Create');
+    $router->get('articles/show', 'ArticleController/Check');
     $router->get('categories', 'Categorie');
 }
 

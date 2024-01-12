@@ -20,5 +20,5 @@ class IndexController
     }
 }
 
-new indexController();
+new IndexController();
 

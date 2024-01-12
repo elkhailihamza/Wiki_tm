@@ -45,7 +45,7 @@ class Router
     {
         $uriParts = explode('/', $this->uri);
         if (isset($uriParts[1]) && $uriParts[1] === 'show') {
-            return require functions::base_path('app/Controller/ArticleController/ShowController.php');
+            return require functions::base_path('app/Controller/ArticleController/CheckController.php');
         }
         foreach ($this->routes as $route) {
             if ($route['uri'] === $this->uri && $route['method'] === strtoupper($this->method)) {

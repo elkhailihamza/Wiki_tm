@@ -16,8 +16,20 @@ class Article
     {
         return $this->db->query('SELECT ' . $select . ' FROM wiki_article ' . $searchTerm, $terms)[$mode];
     }
-    public function deleteArticle($terms) {
+    public function deleteArticle($terms)
+    {
         $this->db->query('DELETE FROM `wiki_article` WHERE id_article = ?', $terms);
+    }
+    public function update($title, $content, $id_article, $categorie_id = null)
+    {
+        $sql = "UPDATE `wiki_article` SET `article_name`= :title,`article_content`= :content, `categorie_id`= :categorie_id WHERE id_article = :id_article";
+
+        $pdo = $this->db->query(
+            $sql,
+            ['title' => $title, 'content' => $content, 'categorie_id' => $categorie_id, 'id_article' => $id_article]
+        )['pdo'];
+
+        return $pdo->lastInsertId();
     }
     public function insert($title, $content, $is_archived, $author_id, $categorie_id = null)
     {

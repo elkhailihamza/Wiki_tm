@@ -33,7 +33,7 @@ require(__DIR__ . "/../includes/header.php");
                         <input type="hidden" name="id_delete" value="<?= $selectedArticle->id_article ?>">
                         <button type="submit" name="delete" class="btn btn-outline-danger">DELETE</button>
                     </form>
-                    <button class="btn btn-outline-success">EDIT</button>
+                    <a href="<?= "/wiki_tm/" . $_GET['uri'] . "/update"?>" class="btn btn-outline-success">EDIT</a>
                 </div>
             </div>
         </div>

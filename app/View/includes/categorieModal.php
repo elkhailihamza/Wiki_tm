@@ -12,18 +12,23 @@
                 </form> -->
                 <div class="card w-100">
                     <div class="card-body">
+
                         <?php
                         if (isset($categories)) {
-                            foreach ($categories as $i => $category):
-                                ?>
-                                <input type="checkbox" id="<?= $category->categorie_name ?>"
-                                    value="<?= $category->id_categorie ?>" name="categorie">
-                                <label for="<?= $category->categorie_name ?>">
-                                    <?= $i + 1 . "). " . $category->categorie_name ?>
-                                </label>
-                                </br>
+                            ?>
+                            <select name="categorie" id="categorie" class="form-control">
+                                <option value="NULL" hidden selected disabled>Select a Category</option>
                                 <?php
-                            endforeach;
+                                foreach ($categories as $i => $category):
+                                    ?>
+                                    <option value="<?= $category->id_categorie ?>" id="<?= $category->categorie_name ?>">
+                                        <?= $i + 1 . "). " . $category->categorie_name ?>
+                                    </option>
+                                    <?php
+                                endforeach;
+                                ?>
+                            </select>
+                            <?php
                         } else {
                             echo 'No categories can be found at the moment!';
                         }
