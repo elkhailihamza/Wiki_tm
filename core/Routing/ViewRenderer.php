@@ -1,11 +1,11 @@
 <?php
 
 namespace core\Routing;
-use core\Routing\functions;
+use app\Controller\Functions;
 
 class ViewRenderer {
     public static function view($view, $data = []) {
         $data;
-        require functions::base_path($view);
+        require Functions::base_path($view);
     }
 }

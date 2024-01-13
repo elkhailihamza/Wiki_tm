@@ -3,6 +3,7 @@
 namespace app\Controller\ArticleController;
 
 use core\Routing\ViewRenderer;
+use core\Routing\functions;
 
 class ShowController
 {
@@ -13,5 +14,8 @@ class ShowController
     public function index($article)
     {
         ViewRenderer::view("app/View/ArticleView/show.view.php", ['article' => $article]);
+    }
+    public function fetchUser() {
+
     }
 }

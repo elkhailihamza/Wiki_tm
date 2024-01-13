@@ -2,6 +2,7 @@
 namespace app\Controller\AuthController;
 
 use app\Services\sessionManager;
+use core\Routing\ViewRenderer;
 use app\model\Auth;
 
 class IndexController
@@ -12,10 +13,11 @@ class IndexController
     private $email;
     private $pass;
     private $confirmPass;
-    private static string $error;
+    private static array $errors = [];
     public function __construct()
     {
         $this->Auth = new Auth();
+        $this->displayError();
         $this->registration();
     }
 
@@ -56,12 +58,16 @@ class IndexController
                 sessionManager::set('fname', $result->fname);
                 sessionManager::set('lname', $result->lname);
                 sessionManager::set('role_id', $result->role_id);
-                header("Location: home");
+                if ((int) sessionManager::get('role_id') === 2) {
+                    header("Location: dashboard/home");
+                    exit;
+                }
+                header("Location: /wiki_tm/home");
+                exit;
             }
         } else {
-            self::$error = 'Email or password error!';
+            self::$errors[] = 'Email or password error!';
         }
-        $this->displayError();
     }
     public function registerUser()
     {
@@ -70,22 +76,21 @@ class IndexController
             if ($this->pass === $this->confirmPass) {
                 $hashed = password_hash($this->pass, PASSWORD_DEFAULT);
                 if ($this->Auth->registerUser($this->fname, $this->lname, $this->email, $hashed, 1)) {
-                    header('Location: /login');
+                    header('Location: /wiki_tm/login');
                 } else {
-                    self::$error = 'Register Error!';
+                    self::$errors[] = 'Register Error!';
                 }
             } else {
-                self::$error = 'Password does not match!';
+                self::$errors[] = 'Password does not match!';
             }
         } else {
-            self::$error = 'Email already in use!';
+            self::$errors[] = 'Email already in use!';
         }
-        $this->displayError();
     }
     public function displayError()
     {
-        if (!empty(self::$error)) {
-            include_once(__DIR__ . '/../View/includes/partial/errorBox.php');
+        if (!empty(self::$errors)) {
+            ViewRenderer::view('app/View/includes/partial/errorbox.php', ['error' => self::$errors]);
         }
     }
 }

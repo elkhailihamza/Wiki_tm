@@ -1,11 +1,12 @@
-<div class=" text-center alert alert-danger">
-    <?php
-    foreach ($errors as $error):
-        ?>
-        <span>
-            <?= $error ?>
-        </span>
+<div class="text-center alert alert-danger">
+    <span>
         <?php
-    endforeach;
-    ?>
+        foreach ($data['error'] as $error):
+            ?>
+            <?= $error ?>
+            </br>
+            <?php
+        endforeach;
+        ?>
+    </span>
 </div>

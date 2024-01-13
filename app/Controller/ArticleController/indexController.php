@@ -2,6 +2,7 @@
 
 namespace app\Controller\ArticleController;
 
+use core\Routing\ViewRenderer;
 use app\model\Article;
 
 class IndexController
@@ -10,9 +11,11 @@ class IndexController
     public function __construct()
     {
         $this->Article = new Article();
+    }
+    public function index()
+    {
         $articles = $this->fetchArticles();
-
-        require(__DIR__ . '/../../View/ArticleView/index.view.php');
+        ViewRenderer::view('app/View/ArticleView/index.view.php', ['articles' => $articles]);
     }
     public function fetchArticles()
     {
@@ -20,5 +23,5 @@ class IndexController
     }
 }
 
-new IndexController();
-
+$index = new IndexController();
+$index->index();

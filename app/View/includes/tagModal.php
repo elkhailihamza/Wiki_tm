@@ -6,14 +6,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- <form>
-                    <input type="search" placeholder="Search for a tag.." class="form-control" name="searchTag">
-                </form> -->
                 <div class="card w-100">
                     <div class="card-body">
                         <?php
-                        if (isset($tags)) {
-                            foreach ($tags as $i => $tag):
+                        if (isset($data['tags'])) {
+                            foreach ($data['tags'] as $i => $tag):
                                 ?>
                                 <input type="checkbox" name="tags[]" id="<?= $tag->tag_name ?>" value="<?= $tag->id_tag ?>">
                                 <label for="<?= $tag->tag_name ?>">

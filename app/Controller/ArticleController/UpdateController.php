@@ -4,7 +4,7 @@ namespace app\Controller\ArticleController;
 
 use app\model\Article;
 use core\Routing\ViewRenderer;
-use app\Controller\Validator;
+use app\Controller\Functions;
 
 class UpdateController
 {
@@ -48,10 +48,10 @@ class UpdateController
     public function update()
     {
         $this->fetchData();
-        if (!Validator::string($this->articleTitle, 1, 300)) {
+        if (!Functions::string($this->articleTitle, 1, 300)) {
             self::$errors[] = 'A title that is no more than a 300 chars is required!';
         }
-        if (!Validator::string($this->articleContent, 1, 1000)) {
+        if (!Functions::string($this->articleContent, 1, 1000)) {
             self::$errors[] = 'An article content that is no more than a 1000 chars is required!';
         }
         if (empty(self::$errors)) {

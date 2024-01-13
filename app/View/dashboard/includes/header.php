@@ -1,3 +1,7 @@
+<?php
+
+use app\Services\sessionManager;
+?>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark user-select-none">
         <!-- Sidebar Toggle-->
@@ -24,7 +28,7 @@
                         <hr class="dropdown-divider" />
                     </li>
                     <li>
-                        <form method="post">
+                        <form method="post" action="/wiki_tm/logout">
                             <button class="dropdown-item" type="submit" name="submit" value="logout">Logout</button>
                         </form>
                     </li>
@@ -49,7 +53,7 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Change me!
+                    <?= sessionManager::get('fname') . " " . sessionManager::get('lname') ?>
                 </div>
             </nav>
         </div>

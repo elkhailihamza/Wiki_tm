@@ -32,22 +32,30 @@
                             <?php
                         endforeach;
                         ?>
-                        <div class="nav-item dropdown">
-                            <button class="btn btn-secondary bg-transparent border-0" type="button" id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="feather feather-arrow-down-circle">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="8 12 12 16 16 12"></polyline>
-                                    <line x1="12" y1="8" x2="12" y2="16"></line>
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="/wiki_tm/logout">Logout</a></li>
-                            </ul>
+                        <div class="nav-item">
+                            <li class="nav-item ">
+                                <a class="nav-link" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="feather feather-arrow-down-circle">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="8 12 12 16 16 12"></polyline>
+                                        <line x1="12" y1="8" x2="12" y2="16"></line>
+                                    </svg></a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#!">Settings</a></li>
+                                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider" />
+                                    </li>
+                                    <li>
+                                        <form method="post" action="/wiki_tm/logout">
+                                            <button class="dropdown-item" type="submit" name="logout">Logout</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
                         </div>
                     </div>
                 </div>

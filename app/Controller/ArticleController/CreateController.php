@@ -4,9 +4,8 @@ namespace app\Controller\ArticleController;
 
 use app\model\Article;
 use app\Services\sessionManager;
-use app\Controller\Validator;
-
-require __DIR__ . "/../Validator.php";
+use app\Controller\Functions;
+use core\Routing\ViewRenderer;
 
 class CreateController
 {
@@ -20,9 +19,18 @@ class CreateController
     {
         $this->Article = new Article();
         $this->create();
+    }
+    public function index()
+    {
         $categories = $this->selectCategorie();
         $tags = $this->selectTag();
-        require(__DIR__ . '/../../View/ArticleView/create.view.php');
+        ViewRenderer::view(
+            '/../../View/ArticleView/create.view.php',
+            [
+                'categories' => $categories,
+                'tags' => $tags
+            ]
+        );
     }
     public function fetchData()
     {
@@ -37,15 +45,15 @@ class CreateController
     }
     public function fetchArticles()
     {
-        return $this->Article->fetchArticles('');
+        return $this->Article->fetchArticles();
     }
     public function create()
     {
         $this->fetchData();
-        if (!Validator::string($this->articleTitle, 1, 300)) {
+        if (!Functions::string($this->articleTitle, 1, 300)) {
             self::$errors[] = 'A title that is no more than a 300 chars is required!';
         }
-        if (!Validator::string($this->articleContent, 1, 1000)) {
+        if (!Functions::string($this->articleContent, 1, 1000)) {
             self::$errors[] = 'An article content that is no more than a 1000 chars is required!';
         }
         if (empty(self::$errors)) {
@@ -71,4 +79,5 @@ class CreateController
     }
 }
 
-new CreateController();
+$create = new CreateController();
+$create->index();

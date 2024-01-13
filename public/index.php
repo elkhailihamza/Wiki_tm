@@ -15,7 +15,7 @@ $router->post('login', 'AuthController/Login');
 $router->get('register', 'AuthController/Register');
 $router->post('register', 'AuthController/Register');
 
-if (sessionManager::get('id_user') !== NULL) {
+if (sessionManager::get('role_id') !== NULL) {
     $router->get('/', 'Home');
     $router->get('home', 'Home');
     $router->get('articles', 'ArticleController/Index');
@@ -28,10 +28,11 @@ if (sessionManager::get('id_user') !== NULL) {
     $router->post('logout', 'AuthController/Logout');
 }
 
-if ((int) sessionManager::get('id_user') === 2) {
+if ((int) sessionManager::get('role_id') === 2) {
     $router->get('dashboard', 'DashboardController/Index');
     $router->get('dashboard/', 'DashboardController/Index');
     $router->get('dashboard/home', 'DashboardController/Index');
+    $router->post('dashboard/home', 'DashboardController/Index');
     $router->get('dashboard/wiki', 'DashboardController/Show');
 }
 

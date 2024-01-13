@@ -23,6 +23,8 @@ include(__DIR__ . "./includes/header.php");
                 </thead>
                 <tbody>
                     <?php
+                    include __DIR__ . "/../includes/categorieModal.php";
+                    include __DIR__ . "/../includes/tagModal.php";
                     foreach ($data['articles'] as $i => $article):
                         require(__DIR__ . "/./includes/partial/wikis.php");
                     endforeach;

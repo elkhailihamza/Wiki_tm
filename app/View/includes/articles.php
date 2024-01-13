@@ -1,10 +1,10 @@
 <?php
 
-if (!empty($articles)) {
+if (!empty($data['articles'])) {
     ?>
     <div class="container col-9 mt-5 border" style="height: 375px; overflow: auto;">
         <?php
-        foreach ($articles as $article):
+        foreach ($data['articles'] as $article):
             ?>
             <div class="d-flex justify-content-between">
                 <div>
@@ -25,7 +25,7 @@ if (!empty($articles)) {
                         <?= htmlspecialchars($article->date_de_creation) ?>
                     </p>
                     <p class="text-muted">
-                        By:
+                        Author:
                         <?= htmlspecialchars($article->fname . " " . $article->lname) ?>
                     </p>
                 </div>

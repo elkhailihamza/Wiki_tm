@@ -2,7 +2,7 @@
 
 namespace core\Routing;
 
-use core\Routing\functions;
+use core\Routing\ViewRenderer;
 
 class Router
 {
@@ -45,11 +45,11 @@ class Router
     {
         $uriParts = explode('/', $this->uri);
         if (isset($uriParts[1]) && $uriParts[1] === 'show') {
-            return require functions::base_path('app/Controller/ArticleController/CheckController.php');
+            return ViewRenderer::view('app/Controller/ArticleController/CheckController.php');
         }
         foreach ($this->routes as $route) {
             if ($route['uri'] === $this->uri && $route['method'] === strtoupper($this->method)) {
-                return require functions::base_path('app/Controller/' . $route['controller'] . 'Controller.php');
+                return ViewRenderer::view('app/Controller/' . $route['controller'] . 'Controller.php');
             }
         }
         self::abort();

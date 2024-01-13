@@ -44,7 +44,7 @@
             </svg></button>
         <form method="post" action="/wiki_tm/articles/destory">
             <input type="hidden" name="_method" value="DELETE">
-            <input type="hidden" name="id_delete" value="<?= $selectedArticle->id_article ?>">
+            <input type="hidden" name="id_delete" value="<?= $article->id_article ?>">
             <button class="btn btn-outline-danger p-1 d-flex justify-content-center align-items-center"><svg
                     xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
