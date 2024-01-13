@@ -1,12 +1,16 @@
 <?php
 
 namespace app\Controller\DashboardController;
-use core\Routing\functions;
 
-class IndexController {
-    public function __construct() {
-        require __DIR__ . "/../../View/dashboard/dashboard_home.view.php";
+use core\Routing\ViewRenderer;
+
+class IndexController
+{
+    public function index()
+    {
+        ViewRenderer::view("app/View/dashboard/dashboard_wiki.view.php", []);
     }
 }
 
-new IndexController();
+$dashboard = new IndexController();
+$dashboard->index();

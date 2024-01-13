@@ -3,7 +3,7 @@
 namespace app\Controller\ArticleController;
 
 use app\model\Article;
-use core\Routing\functions;
+use core\Routing\ViewRenderer;
 use app\Controller\Validator;
 
 class UpdateController
@@ -19,12 +19,20 @@ class UpdateController
     public function __construct($article)
     {
         $this->Article = new Article();
-        $selectedArticle = $article;
         $this->selectedArticle = $article;
         $this->update();
-        $categories = $this->selectCategorie();
-        $tags = $this->selectTag();
-        require functions::base_path('app/View/ArticleView/update.view.php');
+        $this->index();
+    }
+    public function index()
+    {
+        ViewRenderer::view(
+            "app/View/ArticleView/update.view.php",
+            [
+                'article' => $this->selectedArticle,
+                'categories' => $this->selectCategorie(),
+                'tags' => $this->selectTag()
+            ]
+        );
     }
     public function fetchData()
     {
@@ -51,6 +59,8 @@ class UpdateController
             if (!empty($this->tags)) {
                 $this->insertTagWiki($lastInsertedId);
             }
+            header("Location: /wiki_tm/articles/show/" . $this->articleTitle);
+            exit;
         }
     }
 

@@ -14,7 +14,7 @@ class Article
     }
     public function fetchArticles($select = '*', $searchTerm = ';', $terms = [], $mode = 'fetchAll')
     {
-        return $this->db->query('SELECT ' . $select . ' FROM wiki_article ' . $searchTerm, $terms)[$mode];
+        return $this->db->query('SELECT ' . $select . ' FROM `wiki_article` ' . $searchTerm, $terms)[$mode];
     }
     public function deleteArticle($terms)
     {

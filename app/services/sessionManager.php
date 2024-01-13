@@ -15,7 +15,7 @@ class sessionManager {
     public static function get($key) {
         return $_SESSION[$key] ?? null;
     }
-    public static function destory() {
+    public static function destroy() {
         session_destroy();
     }
 }

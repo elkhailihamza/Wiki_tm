@@ -5,18 +5,18 @@ require(__DIR__ . "/../includes/header.php");
 <div class="form-group d-flex flex-column justify-content-center align-items-center" style="height: 575px;">
     <div class="container text-center mb-3">
         <h3>Update:
-            <?= $selectedArticle->article_name ?>
+            <?= $data['article']->article_name ?>
         </h3>
     </div>
     <form method="post" class="col-6">
         <div class="mb-3 form-floating">
-            <input type="text" value="<?= $selectedArticle->article_name ?>" class="form-control" id="articletitle"
+            <input type="text" value="<?= $data['article']->article_name ?>" class="form-control" id="articletitle"
                 name="articletitle">
             <label for="articletitle" class="form-label">Article Title</label>
         </div>
         <div class="mb-3 form-floating">
             <textarea type="text" class="form-control" id="articlecontent" name="articlecontent"
-                style="height: 300px; resize: none;"><?= $selectedArticle->article_content ?></textarea>
+                style="height: 300px; resize: none;"><?= $data['article']->article_content ?></textarea>
             <label for="articlecontent" class="form-label" col="">Article content</label>
         </div>
         <div class="mb-3 gap-1 justify-content-center d-flex">

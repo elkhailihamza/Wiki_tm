@@ -1,10 +1,12 @@
 <?php
 
-class HomeController {
-
-    public function __construct() {
-        require_once __DIR__ . "/../View/dashboard/dashboard_home.view.php";
+class HomeController
+{
+    public function index()
+    {
+        require_once __DIR__ . "/../View/index.view.php";
     }
 }
 
-new HomeController();
+$home = new HomeController();
+$home->index();
