@@ -16,6 +16,9 @@ class Article
     {
         return $this->db->query('SELECT ' . $select . ' FROM `wiki_article` ' . $searchTerm, $terms)[$mode];
     }
+    public function fetchUser($select = '*', $searchTerm = ';', $terms = [], $mode = 'fetch') {
+        return $this->db->query('SELECT ' . $select . ' FROM `users` ' . $searchTerm, $terms)[$mode];
+    }
     public function deleteArticle($terms)
     {
         $this->db->query('DELETE FROM `wiki_article` WHERE id_article = ?', $terms);

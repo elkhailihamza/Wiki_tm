@@ -25,7 +25,7 @@ class CreateController
         $categories = $this->selectCategorie();
         $tags = $this->selectTag();
         ViewRenderer::view(
-            '/../../View/ArticleView/create.view.php',
+            'app/View/ArticleView/create.view.php',
             [
                 'categories' => $categories,
                 'tags' => $tags

@@ -17,8 +17,8 @@ require(__DIR__ . "/../includes/header.php");
                             </p>
                         </div>
                         <div class="mt-5">
-                            By :
-                            <?= htmlspecialchars($data['article']->fname . " " . $data['article']->lname) ?>
+                            Author:
+                            <?= htmlspecialchars($data['article']->fname . " " . $data['article']->lname) . " " . $data['authority'] ? 'YOU' : '' ?>
                             </br>
                             Created :
                             <?= $data['article']->date_de_creation ?>
@@ -26,17 +26,23 @@ require(__DIR__ . "/../includes/header.php");
                     </div>
                 </div>
             </div>
-            <div class="row mt-5">
-                <div class="col-lg-12 d-flex justify-content-center gap-2">
-                    <form method="post" action="/wiki_tm/articles">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="term" value="user">
-                        <input type="hidden" name="id_delete" value="<?= $data['article']->id_article ?>">
-                        <button type="submit" name="delete" class="btn btn-outline-danger">DELETE</button>
-                    </form>
-                    <a href="<?= "/wiki_tm/" . $_GET['uri'] . "/update"?>" class="btn btn-outline-success">EDIT</a>
+            <?php
+            if ($data['authority']) {
+                ?>
+                <div class="row mt-5">
+                    <div class="col-lg-12 d-flex justify-content-center gap-2">
+                        <form method="post" action="/wiki_tm/articles">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="term" value="user">
+                            <input type="hidden" name="id_delete" value="<?= $data['article']->id_article ?>">
+                            <button type="submit" name="delete" class="btn btn-outline-danger">DELETE</button>
+                        </form>
+                        <a href="<?= "/wiki_tm/" . $_GET['uri'] . "/update" ?>" class="btn btn-outline-success">EDIT</a>
+                    </div>
                 </div>
-            </div>
+                <?php
+            }
+            ?>
         </div>
     </section>
 </section>

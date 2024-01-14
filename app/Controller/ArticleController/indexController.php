@@ -3,7 +3,9 @@
 namespace app\Controller\ArticleController;
 
 use core\Routing\ViewRenderer;
+use app\Controller\Functions;
 use app\model\Article;
+use app\Services\sessionManager;
 
 class IndexController
 {
@@ -19,7 +21,7 @@ class IndexController
     }
     public function fetchArticles()
     {
-        return $this->Article->fetchArticles("wiki_article.id_article, wiki_article.article_name, wiki_article.article_content, wiki_article.is_archived, wiki_article.date_de_creation, wiki_article.auteur_id, wiki_article.categorie_id, users.fname, users.lname", "INNER JOIN users ON wiki_article.auteur_id = users.id_user;");
+        return $this->Article->fetchArticles("wiki_article.id_article, wiki_article.article_name, wiki_article.article_content, wiki_article.is_archived, wiki_article.date_de_creation, wiki_article.auteur_id, categorie.categorie_name, users.fname, users.lname", "INNER JOIN users ON wiki_article.auteur_id = users.id_user LEFT JOIN categorie ON wiki_article.categorie_id = categorie.id_categorie ORDER BY wiki_article.id_article DESC;");
     }
 }
 
