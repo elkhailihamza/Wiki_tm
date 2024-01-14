@@ -1,4 +1,5 @@
-<div class="modal fade" id="tag" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="tag<?= $article->id_article ?? '' ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,12 +12,20 @@
                         <?php
                         if (isset($data['tags'])) {
                             foreach ($data['tags'] as $i => $tag):
+                                $isChecked = false;
+                                foreach ($data['checked'] as $checkedItem) {
+                                    if ($checkedItem->tag_id === $tag->id_tag && $checkedItem->article_id === $article->id_article) {
+                                        $isChecked = true;
+                                        break;
+                                    }
+                                }
                                 ?>
-                                <input type="checkbox" name="tags[]" id="<?= $tag->tag_name ?>" value="<?= $tag->id_tag ?>">
+                                <input type="checkbox" name="tags[<?= $article->id_article ?? '' ?>][]"
+                                    id="<?= $tag->tag_name ?>" value="<?= $tag->id_tag ?>" <?= $isChecked ? 'checked' : '' ?>>
                                 <label for="<?= $tag->tag_name ?>">
                                     <?= $i + 1 . ") " . strtoupper($tag->tag_name) ?>
                                 </label>
-                                </br>
+                                <br>
                                 <?php
                             endforeach;
                         } else {

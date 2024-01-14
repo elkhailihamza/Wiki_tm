@@ -1,4 +1,5 @@
-<div class="modal fade" id="categorie" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="categorie<?= $article->id_article ?? '' ?>" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,11 +9,10 @@
             <div class="modal-body">
                 <div class="card w-100">
                     <div class="card-body">
-
                         <?php
                         if (isset($data['categories'])) {
                             ?>
-                            <select name="categorie" id="categorie" class="form-control">
+                            <select name="categorie[<?= $article->id_article ?? '' ?>]" class="form-control">
                                 <option value="NULL" hidden selected disabled>Select a Category</option>
                                 <?php
                                 foreach ($data['categories'] as $i => $category):

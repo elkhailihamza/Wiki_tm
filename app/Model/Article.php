@@ -16,8 +16,13 @@ class Article
     {
         return $this->db->query('SELECT ' . $select . ' FROM `wiki_article` ' . $searchTerm, $terms)[$mode];
     }
-    public function fetchUser($select = '*', $searchTerm = ';', $terms = [], $mode = 'fetch') {
+    public function fetchUser($select = '*', $searchTerm = ';', $terms = [], $mode = 'fetch')
+    {
         return $this->db->query('SELECT ' . $select . ' FROM `users` ' . $searchTerm, $terms)[$mode];
+    }
+    public function fetchCheckedTags()
+    {
+        return $this->db->query('SELECT `tag_id`, `article_id` FROM `wiki_tag`;')['fetchAll'];
     }
     public function deleteArticle($terms)
     {
