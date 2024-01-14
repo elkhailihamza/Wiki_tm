@@ -49,6 +49,14 @@ use app\Services\sessionManager;
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Manage Articles
                         </a>
+                        <a class="nav-link" href="/wiki_tm/dashboard/categorie">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Manage Categories
+                        </a>
+                        <a class="nav-link" href="/wiki_tm/dashboard/tags">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Manage Tags
+                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">

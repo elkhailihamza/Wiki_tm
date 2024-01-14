@@ -16,6 +16,16 @@ class Article
     {
         return $this->db->query('SELECT ' . $select . ' FROM `wiki_article` ' . $searchTerm, $terms)[$mode];
     }
+    public function fetchCategories()
+    {
+        return $this->db->query('SELECT * FROM `categorie`;')['fetchAll'];
+    }
+    public function editCategory($terms) {
+        $this->db->query('UPDATE `categorie` SET `categorie_name`= :name,`categorie_desc`= :desc WHERE `id_categorie`= :id', $terms);
+    }
+    public function createCategory($terms) {
+        $this->db->query('INSERT INTO `categorie`(`categorie_name`, `categorie_desc`) VALUES (:name,:desc);', $terms);
+    }
     public function fetchUser($select = '*', $searchTerm = ';', $terms = [], $mode = 'fetch')
     {
         return $this->db->query('SELECT ' . $select . ' FROM `users` ' . $searchTerm, $terms)[$mode];

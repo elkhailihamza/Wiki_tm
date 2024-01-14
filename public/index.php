@@ -35,6 +35,8 @@ if ((int) sessionManager::get('role_id') === 2) {
     $router->post('dashboard/home', 'DashboardController/Index');
     $router->get('dashboard/wiki', 'DashboardController/Show');
     $router->post('dashboard/save', 'DashboardController/Save');
+    $router->get('dashboard/categorie', 'DashboardController/Categorie');
+    $router->get('dashboard/tags', 'DashboardController/Tags');
 }
 
 Application::run($router);

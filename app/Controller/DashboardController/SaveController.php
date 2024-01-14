@@ -9,23 +9,43 @@ class SaveController
     public function __construct()
     {
         $this->Article = new Article();
-        $this->fetchAllData();
+        $this->saveData();
     }
-    public function fetchAllData()
+    public function saveData()
     {
         if (isset($_POST['saveData'])) {
             extract($_POST);
-
-            // if (isset($categories)) {
-            //     $this->categories($categories);
-            // }
+            if (isset($categories)) {
+                $this->categories($categories);
+            }
             if (isset($tags)) {
                 $this->updateTags($tags);
             }
-            die();
-            header("Location: /wiki_tm/dashboard/home");
+            header("Location: /wiki_tm/dashboard/wiki");
             exit;
         }
+        if (isset($_POST['saveDataCategoryEdit'])) {
+            extract($_POST);
+            if (isset($categorieTitle) && isset($CategorieText)) {
+                $this->editCategory($id, $categorieTitle, $CategorieText);
+            }
+            header("Location: /wiki_tm/dashboard/categorie");
+            exit;
+        }
+        if (isset($_POST['saveDataCategoryCreate'])) {
+            extract($_POST);
+            if (isset($categorieTitle) && isset($CategorieText)) {
+                $this->createCategory($categorieTitle, $CategorieText);
+            }
+            header("Location: /wiki_tm/dashboard/categorie");
+            exit;
+        }
+    }
+    public function editCategory($id, $categorieTitle, $CategorieText) {
+        $this->Article->editCategory(['name' => $categorieTitle, 'desc' => $CategorieText, 'id' => $id]);
+    }
+    public function createCategory($categorieTitle, $CategorieText) {
+        $this->Article->createCategory(['name' => $categorieTitle, 'desc' => $CategorieText]);
     }
 
     public function categories($categories)
