@@ -35,18 +35,22 @@
                 <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
                 <line x1="7" y1="7" x2="7.01" y2="7"></line>
             </svg></button>
-        <button type="button" class="btn btn-outline-dark p-1 d-flex justify-content-center align-items-center"><svg
-                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-archive">
-                <polyline points="21 8 21 21 3 21 3 8"></polyline>
-                <rect x="1" y="3" width="22" height="5"></rect>
-                <line x1="10" y1="12" x2="14" y2="12"></line>
-            </svg></button>
-        <!-- <form method="post" action="/wiki_tm/articles/destory">
+        <form method="post" action="/wiki_tm/dashboard/save">
+            <input type="hidden" name="id_archive" value="<?= $article->id_article ?>">
+            <input type="hidden" name="archive" value="<?= $article->is_archived ?>">
+            <button type="submit" name="archiveArticle" class="btn btn-outline-dark p-1 d-flex justify-content-center align-items-center"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-archive">
+                    <polyline points="21 8 21 21 3 21 3 8"></polyline>
+                    <rect x="1" y="3" width="22" height="5"></rect>
+                    <line x1="10" y1="12" x2="14" y2="12"></line>
+                </svg></button>
+        </form>
+        <form method="post" action="/wiki_tm/dashboard/save">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="id_delete" value="<?= $article->id_article ?>">
-            <button type="button"
+            <button type="submit" name="deleteArticle"
                 class="btn btn-outline-danger p-1 d-flex justify-content-center align-items-center"><svg
                     xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -55,6 +59,6 @@
                     <line x1="18" y1="9" x2="12" y2="15"></line>
                     <line x1="12" y1="9" x2="18" y2="15"></line>
                 </svg></button>
-        </form> -->
+        </form>
     </td>
 </tr>

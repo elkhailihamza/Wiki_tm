@@ -72,23 +72,54 @@ class SaveController
             header("Location: /wiki_tm/dashboard/tags");
             exit;
         }
+        if (isset($_POST['deleteArticle'])) {
+            extract($_POST);
+            if (isset($id_delete)) {
+                $this->deleteArticle([$id_delete]);
+            }
+            header("Location: /wiki_tm/dashboard/wiki");
+            exit;
+        }
+        if(isset($_POST['archiveArticle'])) {
+            extract($_POST);
+            if (isset($id_archive)) {
+                $archive ^= 1;
+                $this->archiveArticle($archive, $id_archive);
+            }
+        }
+        header("Location: /wiki_tm/dashboard/wiki");
+        exit;
     }
-    private function editTag($tagTitle, $id) {
+    public function archiveArticle($archive, $id_archive)
+    {
+        $this->Article->archiveArticle(['archive' => $archive, 'id' => $id_archive]);
+    }
+    public function deleteArticle($id_delete)
+    {
+        $this->Article->deleteArticle($id_delete);
+    }
+    private function editTag($tagTitle, $id)
+    {
         $this->Article->editTag(['name' => $tagTitle, 'id' => $id]);
     }
-    private function deleteTag($id) {
+    private function deleteTag($id)
+    {
         $this->Article->deleteTag(['id' => $id]);
     }
-    public function createTag($tagTitle) {
+    public function createTag($tagTitle)
+    {
         $this->Article->createTag(['name' => $tagTitle]);
     }
-    public function editCategory($id, $categorieTitle, $CategorieText) {
+    public function editCategory($id, $categorieTitle, $CategorieText)
+    {
         $this->Article->editCategory(['name' => $categorieTitle, 'desc' => $CategorieText, 'id' => $id]);
     }
-    public function createCategory($categorieTitle, $CategorieText) {
+    public function createCategory($categorieTitle, $CategorieText)
+    {
         $this->Article->createCategory(['name' => $categorieTitle, 'desc' => $CategorieText]);
     }
-    public function deleteCategory($categorieId) {
+    public function deleteCategory($categorieId)
+    {
         $this->Article->deleteCategory(['id' => $categorieId]);
     }
 

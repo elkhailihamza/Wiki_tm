@@ -20,22 +20,28 @@ class Article
     {
         return $this->db->query('SELECT * FROM `categorie`;')['fetchAll'];
     }
-    public function editCategory($terms) {
+    public function editCategory($terms)
+    {
         $this->db->query('UPDATE `categorie` SET `categorie_name`= :name,`categorie_desc`= :desc WHERE `id_categorie`= :id', $terms);
     }
-    public function createCategory($terms) {
+    public function createCategory($terms)
+    {
         $this->db->query('INSERT INTO `categorie`(`categorie_name`, `categorie_desc`) VALUES (:name,:desc);', $terms);
     }
-    public function deleteCategory($terms) {
+    public function deleteCategory($terms)
+    {
         $this->db->query('DELETE FROM `categorie` WHERE id_categorie = :id;', $terms);
     }
-    public function editTag($terms) {
+    public function editTag($terms)
+    {
         $this->db->query('UPDATE `tag` SET `tag_name` = :name WHERE `id_tag` = :id', $terms);
     }
-    public function createTag($terms) {
+    public function createTag($terms)
+    {
         $this->db->query('INSERT INTO `tag`(`tag_name`) VALUES (:name);', $terms);
     }
-    public function deleteTag($terms) {
+    public function deleteTag($terms)
+    {
         $this->db->query('DELETE FROM `tag` WHERE id_tag = :id;', $terms);
     }
     public function fetchUser($select = '*', $searchTerm = ';', $terms = [], $mode = 'fetch')
@@ -46,12 +52,16 @@ class Article
     {
         return $this->db->query('SELECT `tag_id`, `article_id` FROM `wiki_tag`;')['fetchAll'];
     }
-    public function updateCategorie($terms) {
+    public function updateCategorie($terms)
+    {
         return $this->db->query('UPDATE `wiki_article` SET `categorie_id`= :categorie_id WHERE `id_article`= :id_article;', $terms)['fetch'];
     }
     public function deleteArticle($terms)
     {
         $this->db->query('DELETE FROM `wiki_article` WHERE id_article = ?', $terms);
+    }
+    public function archiveArticle($terms) {
+        $this->db->query('UPDATE `wiki_article` SET `is_archived`= :archive WHERE `id_article`= :id', $terms);
     }
     public function update($title, $content, $id_article, $categorie_id = null)
     {
@@ -84,10 +94,12 @@ class Article
     {
         return $this->db->query('SELECT `id_tag`, `tag_name` FROM `tag`;')['fetchAll'];
     }
-    public function checkTagWiki($terms, $mode) {
+    public function checkTagWiki($terms, $mode)
+    {
         return $this->db->query('SELECT * FROM `wiki_tag` WHERE tag_id = :tag_id && article_id = :article_id;', $terms)[$mode];
     }
-    public function selectTagWiki($mode = 'fetchAll') {
+    public function selectTagWiki($mode = 'fetchAll')
+    {
         return $this->db->query('SELECT * FROM `wiki_tag`;')[$mode];
     }
     public function insertTagWiki($tag_id, $last_id)
