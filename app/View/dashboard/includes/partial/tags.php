@@ -1,16 +1,13 @@
 <tr>
     <th scope="row">
-        <?= $i + 1 ?>
+        <?= $num++ ?>
     </th>
     <td>
-        <?= $category->categorie_name ?>
-    </td>
-    <td>
-        <?= $category->categorie_desc ?>
+        <?= $tag->tag_name ?>
     </td>
     <td class="d-flex justify-content-around">
         <button type="button" class="btn btn-outline-success p-1 d-flex justify-content-center align-items-center"
-            data-bs-toggle="modal" data-bs-target="#categorieEdit<?= $category->id_categorie ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            data-bs-toggle="modal" data-bs-target="#tagEdit<?= $tag->id_tag ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" class="feather feather-tag">
                 <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
@@ -18,8 +15,8 @@
             </svg></button>
         <form method="post" action="/wiki_tm/dashboard/save">
             <input type="hidden" name="_method" value="DELETE">
-            <input type="hidden" name="categoryId" value="<?= $category->id_categorie ?>">
-            <button type="submit" name="saveDataCategoryDel"
+            <input type="hidden" name="tagId" value="<?= $tag->id_tag ?>">
+            <button type="submit" name="saveDataTagDel"
                 class="btn btn-outline-danger p-1 d-flex justify-content-center align-items-center"><svg
                     xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

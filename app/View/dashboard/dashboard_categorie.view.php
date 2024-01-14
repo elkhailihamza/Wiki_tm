@@ -22,13 +22,13 @@ include(__DIR__ . "/includes/header.php");
                     <?php
                     foreach ($data['categories'] as $i => $category):
                         include __DIR__ . "/./includes/categorieEditModal.php";
-                        include __DIR__ . "/./includes/categorieAddModal.php";
                         require(__DIR__ . "/./includes/partial/categories.php");
                     endforeach;
                     ?>
                 </tbody>
             </table>
-            <button data-bs-toggle="modal" data-bs-target="#categorieCreate" class="btn btn-primary">
+            <?php include __DIR__ . "/./includes/categorieAddModal.php"; ?>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#categorieCreate" class="btn btn-primary">
                     Create
             </button>
         </div>

@@ -5,7 +5,7 @@ namespace app\Controller\DashboardController;
 use app\model\Article;
 use core\Routing\ViewRenderer;
 
-class IndexController
+class TagsController
 {
     private $Article;
     public function __construct()
@@ -14,19 +14,13 @@ class IndexController
     }
     public function index()
     {
-        $categories = $this->selectCategorie();
         $tags = $this->selectTag();
         ViewRenderer::view(
-            "app/View/dashboard/dashboard_home.view.php",
+            "app/View/dashboard/dashboard_tag.view.php",
             [
-                'categories' => $categories,
                 'tags' => $tags
             ]
         );
-    }
-    public function selectCategorie()
-    {
-        return $this->Article->selectCategorie();
     }
     public function selectTag()
     {
@@ -34,5 +28,5 @@ class IndexController
     }
 }
 
-$dashboard = new IndexController();
-$dashboard->index();
+$tags = new TagsController();
+$tags->index();

@@ -24,7 +24,8 @@ include(__DIR__ . "/includes/header.php");
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($data['articles'] as $i => $article):
+                        $num = 1;
+                        foreach ($data['articles'] as $article):
                             require(__DIR__ . "/../includes/categorieModal.php");
                             require(__DIR__ . "/../includes/tagModal.php");
                             require(__DIR__ . "/./includes/partial/wikis.php");

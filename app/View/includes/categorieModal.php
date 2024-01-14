@@ -19,7 +19,7 @@
                                 <?php
                                 foreach ($data['categories'] as $i => $category):
                                     ?>
-                                    <option value="<?= $category->id_categorie ?>" id="<?= $category->categorie_name ?>"
+                                    <option value="<?= $category->id_categorie ?>" name="<?= $category->categorie_name ?>"
                                         <?= isset($article->id_categorie) && $article->id_categorie == $category->id_categorie ? 'selected' : '' ?>>
                                         <?= ucfirst($category->categorie_name) ?>
                                     </option>

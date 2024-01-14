@@ -26,6 +26,18 @@ class Article
     public function createCategory($terms) {
         $this->db->query('INSERT INTO `categorie`(`categorie_name`, `categorie_desc`) VALUES (:name,:desc);', $terms);
     }
+    public function deleteCategory($terms) {
+        $this->db->query('DELETE FROM `categorie` WHERE id_categorie = :id;', $terms);
+    }
+    public function editTag($terms) {
+        $this->db->query('UPDATE `tag` SET `tag_name` = :name WHERE `id_tag` = :id', $terms);
+    }
+    public function createTag($terms) {
+        $this->db->query('INSERT INTO `tag`(`tag_name`) VALUES (:name);', $terms);
+    }
+    public function deleteTag($terms) {
+        $this->db->query('DELETE FROM `tag` WHERE id_tag = :id;', $terms);
+    }
     public function fetchUser($select = '*', $searchTerm = ';', $terms = [], $mode = 'fetch')
     {
         return $this->db->query('SELECT ' . $select . ' FROM `users` ' . $searchTerm, $terms)[$mode];

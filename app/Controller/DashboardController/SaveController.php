@@ -40,12 +40,56 @@ class SaveController
             header("Location: /wiki_tm/dashboard/categorie");
             exit;
         }
+        if (isset($_POST['saveDataCategoryDel'])) {
+            extract($_POST);
+            if (isset($categoryId)) {
+                $this->deleteCategory($categoryId);
+            }
+            header("Location: /wiki_tm/dashboard/categorie");
+            exit;
+        }
+        if (isset($_POST['saveDataTagEdit'])) {
+            extract($_POST);
+            if (isset($tagTitle)) {
+                $this->editTag($tagTitle, $id);
+            }
+            header("Location: /wiki_tm/dashboard/tags");
+            exit;
+        }
+        if (isset($_POST['saveDataTagCreate'])) {
+            extract($_POST);
+            if (isset($tagTitle)) {
+                $this->createTag($tagTitle);
+            }
+            header("Location: /wiki_tm/dashboard/tags");
+            exit;
+        }
+        if (isset($_POST['saveDataTagDel'])) {
+            extract($_POST);
+            if (isset($tagId)) {
+                $this->deleteTag($tagId);
+            }
+            header("Location: /wiki_tm/dashboard/tags");
+            exit;
+        }
+    }
+    private function editTag($tagTitle, $id) {
+        $this->Article->editTag(['name' => $tagTitle, 'id' => $id]);
+    }
+    private function deleteTag($id) {
+        $this->Article->deleteTag(['id' => $id]);
+    }
+    public function createTag($tagTitle) {
+        $this->Article->createTag(['name' => $tagTitle]);
     }
     public function editCategory($id, $categorieTitle, $CategorieText) {
         $this->Article->editCategory(['name' => $categorieTitle, 'desc' => $CategorieText, 'id' => $id]);
     }
     public function createCategory($categorieTitle, $CategorieText) {
         $this->Article->createCategory(['name' => $categorieTitle, 'desc' => $CategorieText]);
+    }
+    public function deleteCategory($categorieId) {
+        $this->Article->deleteCategory(['id' => $categorieId]);
     }
 
     public function categories($categories)

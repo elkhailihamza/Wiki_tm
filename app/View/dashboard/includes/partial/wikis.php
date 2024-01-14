@@ -1,6 +1,6 @@
 <tr>
     <th scope="row">
-        <?= $i + 1 ?>
+        <?= $num++ ?>
     </th>
     <td>
         <?= $article->article_name ?>

@@ -39,7 +39,7 @@ class CreateController
         if (isset($_POST['article'])) {
             $this->articleTitle = $_POST['articletitle'];
             $this->articleContent = $_POST['articlecontent'];
-            $this->categorie_id = $_POST['categorie'] ?? NULL;
+            $this->categorie_id = $_POST['categories'] ?? NULL;
             if (!empty($_POST['tags'])) {
                 $this->tags = $_POST['tags'];
             }
@@ -59,7 +59,9 @@ class CreateController
             self::$errors[] = 'An article content that is no more than a 1000 chars is required!';
         }
         if (empty(self::$errors)) {
-            $lastInsertedId = $this->Article->insert($this->articleTitle, $this->articleContent, 1, sessionManager::get('id_user'), $this->categorie_id);
+            foreach ($this->categorie_id as $categorie_id):
+                $lastInsertedId = $this->Article->insert($this->articleTitle, $this->articleContent, 1, sessionManager::get('id_user'), $categorie_id);
+            endforeach;
             if (!empty($this->tags)) {
                 $this->insertTagWiki($lastInsertedId);
             }
@@ -67,8 +69,10 @@ class CreateController
     }
     public function insertTagWiki($lastInsertedId)
     {
-        foreach ($this->tags as $tag_id):
-            $this->Article->insertTagWiki($tag_id, $lastInsertedId);
+        foreach ($this->tags as $tag_array):
+            foreach ($tag_array as $tag_id):
+                $this->Article->insertTagWiki($tag_id, $lastInsertedId);
+            endforeach;
         endforeach;
     }
     public function selectCategorie()
