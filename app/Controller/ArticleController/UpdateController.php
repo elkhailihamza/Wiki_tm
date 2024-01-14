@@ -30,7 +30,8 @@ class UpdateController
             [
                 'article' => $this->selectedArticle,
                 'categories' => $this->selectCategorie(),
-                'tags' => $this->selectTag()
+                'tags' => $this->selectTag(),
+                'checked' => $this->Article->fetchCheckedTags()
             ]
         );
     }

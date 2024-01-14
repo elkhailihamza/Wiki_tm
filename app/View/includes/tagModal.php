@@ -13,17 +13,19 @@
                         if (isset($data['tags'])) {
                             foreach ($data['tags'] as $i => $tag):
                                 $isChecked = false;
-                                foreach ($data['checked'] as $checkedItem) {
-                                    if ($checkedItem->tag_id === $tag->id_tag && $checkedItem->article_id === $article->id_article) {
-                                        $isChecked = true;
-                                        break;
+                                if (isset($article)) {
+                                    foreach ($data['checked'] as $checkedItem) {
+                                        if ($checkedItem->tag_id === $tag->id_tag && $checkedItem->article_id === $article->id_article) {
+                                            $isChecked = true;
+                                            break;
+                                        }
                                     }
                                 }
                                 ?>
                                 <input type="checkbox" name="tags[<?= $article->id_article ?? '' ?>][]"
                                     id="<?= $tag->tag_name ?>" value="<?= $tag->id_tag ?>" <?= $isChecked ? 'checked' : '' ?>>
                                 <label for="<?= $tag->tag_name ?>">
-                                    <?= $i + 1 . ") " . strtoupper($tag->tag_name) ?>
+                                    <?= strtoupper($tag->tag_name) . " " ?><?= $isChecked ? '(used)' : '' ?>
                                 </label>
                                 <br>
                                 <?php

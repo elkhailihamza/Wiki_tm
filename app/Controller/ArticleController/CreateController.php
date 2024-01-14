@@ -24,11 +24,13 @@ class CreateController
     {
         $categories = $this->selectCategorie();
         $tags = $this->selectTag();
+        $checkedTags = $this->Article->fetchCheckedTags();
         ViewRenderer::view(
             'app/View/ArticleView/create.view.php',
             [
                 'categories' => $categories,
-                'tags' => $tags
+                'tags' => $tags,
+                'checked' => $checkedTags
             ]
         );
     }

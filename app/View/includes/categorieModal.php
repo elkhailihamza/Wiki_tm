@@ -12,13 +12,16 @@
                         <?php
                         if (isset($data['categories'])) {
                             ?>
-                            <select name="categorie[<?= $article->id_article ?? '' ?>]" class="form-control">
-                                <option value="NULL" hidden selected disabled>Select a Category</option>
+                            <select name="categories[<?= $article->id_article ?? '' ?>]" class="form-control">
+                                <option value="<?= $article->id_categorie ?? 'NULL' ?>" hidden selected disabled>
+                                    <?= $article->categorie_name ?? 'Select a Category' ?>
+                                </option>
                                 <?php
                                 foreach ($data['categories'] as $i => $category):
                                     ?>
-                                    <option value="<?= $category->id_categorie ?>" id="<?= $category->categorie_name ?>">
-                                        <?= $i + 1 . "). " . $category->categorie_name ?>
+                                    <option value="<?= $category->id_categorie ?>" id="<?= $category->categorie_name ?>"
+                                        <?= isset($article->id_categorie) && $article->id_categorie == $category->id_categorie ? 'selected' : '' ?>>
+                                        <?= ucfirst($category->categorie_name) ?>
                                     </option>
                                     <?php
                                 endforeach;
