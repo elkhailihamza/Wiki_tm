@@ -15,39 +15,39 @@ include __DIR__ . "/./includes/reg_navbar.php";
                                     <h3 class="text-center font-weight-light my-4">Create Account</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST">
+                                    <form method="POST" id="register">
                                         <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" name="fname" type="text"
+                                                    <input class="form-control" id="fname" name="fname" type="text"
                                                         placeholder="Enter your first name" required />
                                                     <label for="inputFirstName">First name</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-floating">
-                                                    <input class="form-control" name="lname" type="text"
+                                                    <input class="form-control" id="lname" name="lname" type="text"
                                                         placeholder="Enter your last name" required />
                                                     <label for="inputLastName">Last name</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" name="email" type="email"
+                                            <input class="form-control" id="email" name="email" type="email"
                                                 placeholder="name@example.com" required />
                                             <label for="inputEmail">Email address</label>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" name="pass" type="password"
+                                                    <input class="form-control" id="pass" name="pass" type="password"
                                                         placeholder="Create a password" required />
                                                     <label for="inputPassword">Password</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" name="confirmpass" type="password"
+                                                    <input class="form-control" id="conPass" name="confirmpass" type="password"
                                                         placeholder="Confirm password" required />
                                                     <label for="inputPasswordConfirm">Confirm Password</label>
                                                 </div>
