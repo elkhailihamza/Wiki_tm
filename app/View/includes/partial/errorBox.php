@@ -4,6 +4,7 @@
         foreach ($data['error'] as $error):
             ?>
             <?= $error ?>
+            <span id="error"></span>
             </br>
             <?php
         endforeach;

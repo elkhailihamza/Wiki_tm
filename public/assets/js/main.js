@@ -12,7 +12,7 @@ class main {
             event.preventDefault();
         
             if (validateForm()) {
-                form.submit(); // If you want to proceed with the form submission
+                form.submit();
             } else {
                 
             }
@@ -24,12 +24,14 @@ class main {
         const email = document.getElementById('email').value.trim();
         const pass = document.getElementById('pass').value.trim();
         const conPass = document.getElementById('conPass').value.trim();
+        const error = document.getElementById('error');
 
         const inputs = [fname, lname, email, pass, conPass];
 
         for(const input of inputs) {
             if(input === '') {
-
+                error.innerText('Please Fill All Inputs!');
+                return false;
             }
         }
     }

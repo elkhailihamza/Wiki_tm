@@ -20,6 +20,10 @@ class Article
     {
         return $this->db->query('SELECT * FROM `categorie`;')['fetchAll'];
     }
+    public function fetchTags()
+    {
+        return $this->db->query('SELECT * FROM `categorie`;')['fetchAll'];
+    }
     public function editCategory($terms)
     {
         $this->db->query('UPDATE `categorie` SET `categorie_name`= :name,`categorie_desc`= :desc WHERE `id_categorie`= :id', $terms);

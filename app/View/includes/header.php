@@ -27,9 +27,9 @@ use app\Services\sessionManager;
                         <?php
                         $uri = $_GET['uri'] ?? 'Home';
                         if (sessionManager::get('id_user') !== NULL) {
-                            $arr = ['Home', 'Articles', 'Create', 'Categories'];
+                            $arr = ['Home', 'Articles', 'Create', 'Categories', 'Statistics'];
                         } else {
-                            $arr = ['Home', 'Articles', 'Categories'];
+                            $arr = ['Home', 'Articles', 'Categories', 'Statistics'];
                         }
                         foreach ($arr as $v):
                             ?>

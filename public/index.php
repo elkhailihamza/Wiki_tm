@@ -15,6 +15,7 @@ $router->get('home', 'ArticleController/Index');
 $router->get('articles', 'ArticleController/Article');
 $router->post('get', 'ArticleController/Getarticles');
 $router->get('get', 'ArticleController/Getarticles');
+$router->get('statistics', 'ArticleController/Statistics');
 $router->get('articles/show', 'ArticleController/Check');
 $router->get('categories', 'ArticleController/Categorie');
 $router->post('search', 'ArticleController/Search');
