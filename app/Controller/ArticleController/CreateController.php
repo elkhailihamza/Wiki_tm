@@ -59,9 +59,13 @@ class CreateController
             self::$errors[] = 'An article content that is no more than a 1000 chars is required!';
         }
         if (empty(self::$errors)) {
-            foreach ($this->categorie_id as $categorie_id):
-                $lastInsertedId = $this->Article->insert($this->articleTitle, $this->articleContent, 1, sessionManager::get('id_user'), $categorie_id);
-            endforeach;
+            if (is_array($this->categorie_id)) {
+                foreach ($this->categorie_id as $categorie_id):
+                    $lastInsertedId = $this->Article->insert($this->articleTitle, $this->articleContent, 1, sessionManager::get('id_user'), $categorie_id);
+                endforeach;
+            } else {
+                $lastInsertedId = $this->Article->insert($this->articleTitle, $this->articleContent, 1, sessionManager::get('id_user'), $this->categorie_id);
+            }
             if (!empty($this->tags)) {
                 $this->insertTagWiki($lastInsertedId);
             }

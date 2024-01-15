@@ -12,12 +12,12 @@ endforeach;
 
 if (!empty($data['articles']) && $articlesFound) {
     ?>
-    <div class="container col-9 mt-5 border" style="height: 375px; overflow: auto;">
+    <div class="container col-9">
         <?php
-        foreach ($data['articles'] as $article):
+        for ($i = 0; $i < 3; $i++) {
             if ($article->is_archived == 1) {
                 ?>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between border px-2">
                     <div class="d-flex flex-column justify-content-between">
                         <div>
                             <div>
@@ -53,11 +53,10 @@ if (!empty($data['articles']) && $articlesFound) {
                         </p>
                     </div>
                 </div>
-                <hr>
                 </br>
                 <?php
             }
-        endforeach;
+        }
         ?>
     </div>
     <?php

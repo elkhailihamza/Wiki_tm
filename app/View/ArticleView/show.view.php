@@ -18,7 +18,8 @@ require(__DIR__ . "/../includes/header.php");
                         </div>
                         <div class="mt-5">
                             Author:
-                            <?= htmlspecialchars($data['article']->fname . " " . $data['article']->lname) . " " . $data['authority'] ? 'YOU' : '' ?>
+                            <?= $data['name'] ?>
+                            <?= $data['authority'] ? '(YOU)' : '' ?>
                             </br>
                             Created :
                             <?= $data['article']->date_de_creation ?>

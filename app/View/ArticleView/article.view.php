@@ -8,16 +8,19 @@ require(__DIR__ . "/../includes/header.php");
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>Welcome
-                            <?= empty($data['name']) ? $data['name'] : "GUEST" ?>
-                        </h2>
-                        <p>View latest!</p>
+                        <h2>All Articles</h2>
+                        <p>View all articles!</p>
                     </div>
+                </div>
+            </div>
+            <div class="row container d-flex mb-2 justify-content-center">
+                <div class="col-lg-6">
+                    <input type="search" name="searchAjax" id="searchAjax" class="form-control" placeholder="Search By Name..">
                 </div>
             </div>
             <div class="row" id="showData">
                 <?php
-                include(__DIR__ . "/../includes/articleLatest.php");
+                include(__DIR__ . "/../includes/articles.php");
                 ?>
             </div>
         </div>

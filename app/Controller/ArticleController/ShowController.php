@@ -17,12 +17,14 @@ class ShowController
     }
     public function index($article)
     {
+        $name = $article->fname . " " . $article->lname;
         $authority = Functions::authorize(sessionManager::get('id_user'), $article->auteur_id);
         ViewRenderer::view(
             "app/View/ArticleView/show.view.php",
             [
                 'article' => $article,
-                'authority' => $authority
+                'authority' => $authority,
+                'name' => $name
             ]
         );
     }

@@ -1,5 +1,4 @@
 <?php
-
 use app\Services\sessionManager;
 ?>
 <body class="sb-nav-fixed">

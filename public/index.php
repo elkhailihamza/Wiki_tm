@@ -10,20 +10,20 @@ sessionManager::start();
 
 $router = new Router;
 
+$router->get('/', 'ArticleController/Index');
+$router->get('home', 'ArticleController/Index');
+$router->get('articles', 'ArticleController/Article');
+$router->get('articles/show', 'ArticleController/Check');
+$router->get('categories', 'Categorie');
 $router->get('login', 'AuthController/Login');
 $router->post('login', 'AuthController/Login');
 $router->get('register', 'AuthController/Register');
 $router->post('register', 'AuthController/Register');
 
 if (sessionManager::get('role_id') !== NULL) {
-    $router->get('/', 'Home');
-    $router->get('home', 'Home');
-    $router->get('articles', 'ArticleController/Index');
     $router->delete('articles', 'ArticleController/Delete');
     $router->get('create', 'ArticleController/Create');
     $router->post('create', 'ArticleController/Create');
-    $router->get('articles/show', 'ArticleController/Check');
-    $router->get('categories', 'Categorie');
     $router->get('logout', 'AuthController/Logout');
     $router->post('logout', 'AuthController/Logout');
 }

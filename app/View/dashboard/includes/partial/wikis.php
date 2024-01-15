@@ -6,7 +6,7 @@
         <?= $article->article_name ?>
     </td>
     <td>
-        <?= $article->is_archived ?>
+        <?= $article->is_archived ^ 1 ? 'TRUE' : 'FALSE' ?>
     </td>
     <td>
         <?= $article->date_de_creation ?>
