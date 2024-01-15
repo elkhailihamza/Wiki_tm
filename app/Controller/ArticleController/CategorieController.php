@@ -9,7 +9,7 @@ class CategorieController
     {
         $this->categorie = new Categorie();
         $OBJ = $this->fetchCategories();
-        require __DIR__ . '/../View/categorie.view.php';
+        require __DIR__ . '/../../View/categorie.view.php';
     }
 
     public function fetchCategories()

@@ -9,7 +9,10 @@ require(__DIR__ . "/../includes/header.php");
                 <div class="col-lg-12">
                     <div class="section-title">
                         <h2>Welcome
-                            <?= empty($data['name']) ? $data['name'] : "GUEST" ?>
+                            <?php
+                                $trim = trim($data['name']);
+                            ?>
+                            <?= ucfirst($data['name']) ?? "GUEST" ?>
                         </h2>
                         <p>View latest!</p>
                     </div>

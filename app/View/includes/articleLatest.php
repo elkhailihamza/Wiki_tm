@@ -11,11 +11,13 @@ foreach ($data['articles'] as $article):
 endforeach;
 
 if (!empty($data['articles']) && $articlesFound) {
+    $limit = 0;
     ?>
     <div class="container col-9">
         <?php
-        for ($i = 0; $i < 3; $i++) {
-            if ($article->is_archived == 1) {
+        foreach($data['articles'] as $article) :
+            if ($article->is_archived == 1 && $limit < 3) {
+                $limit++;
                 ?>
                 <div class="d-flex justify-content-between border px-2">
                     <div class="d-flex flex-column justify-content-between">
@@ -56,7 +58,7 @@ if (!empty($data['articles']) && $articlesFound) {
                 </br>
                 <?php
             }
-        }
+        endforeach;
         ?>
     </div>
     <?php

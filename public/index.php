@@ -14,7 +14,7 @@ $router->get('/', 'ArticleController/Index');
 $router->get('home', 'ArticleController/Index');
 $router->get('articles', 'ArticleController/Article');
 $router->get('articles/show', 'ArticleController/Check');
-$router->get('categories', 'Categorie');
+$router->get('categories', 'ArticleController/Categorie');
 $router->get('login', 'AuthController/Login');
 $router->post('login', 'AuthController/Login');
 $router->get('register', 'AuthController/Register');

@@ -15,7 +15,8 @@ require(__DIR__ . "/../includes/header.php");
             </div>
             <div class="row container d-flex mb-2 justify-content-center">
                 <div class="col-lg-6">
-                    <input type="search" name="searchAjax" id="searchAjax" class="form-control" placeholder="Search By Name..">
+                    <input type="search" name="searchAjax" id="searchAjax" class="form-control"
+                        placeholder="Search By Name..">
                 </div>
             </div>
             <div class="row" id="showData">
@@ -26,6 +27,20 @@ require(__DIR__ . "/../includes/header.php");
         </div>
     </section>
 </section>
+<script>
+    $(document).ready(function () {
+        $('#searchAjax').on("keyup", function () {
+            $.ajax({
+                method: 'POST',
+                url: 'indexController',
+                data: { name: searchTerm },
+                success: function (response) {
+                    $('#showdata').html(response);
+                }
+            });
+        });
+    });
+</script>
 <?php
 require(__DIR__ . "/../includes/footer.php");
 ?>

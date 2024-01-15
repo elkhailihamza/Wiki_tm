@@ -12,8 +12,13 @@ class IndexController
     {
         $search = new SearchController();
         $articles = $search->fetchArticles();
-        $name = sessionManager::get('fname') . " " . sessionManager::get('lname');
-        ViewRenderer::view('app/View/ArticleView/index.view.php', ['articles' => $articles, 'name' => $name]);
+        $name = sessionManager::get('fname') .  sessionManager::get('lname');
+        ViewRenderer::view(
+            'app/View/ArticleView/index.view.php', 
+        [
+            'articles' => $articles, 
+            'name' => $name
+        ]);
     }
 }
 
